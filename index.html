@@ -110,6 +110,72 @@
   .footer-card h2{margin:4px 0 6px}
   .footer-card p{margin:0;color:var(--muted);line-height:1.5}
 
+  /* Minigame */
+  .mini-wrap{text-align:center;margin:10px 0 24px}
+  .minigame-launch{
+    border:0;cursor:pointer;font:inherit;font-weight:900;color:#fff;
+    padding:14px 20px;border-radius:999px;
+    background:linear-gradient(135deg,#ef7e9c,#c7b7ee);
+    box-shadow:0 10px 24px rgba(70,42,62,.15);
+    transition:transform .2s, box-shadow .2s;
+  }
+  .minigame-launch:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(70,42,62,.2)}
+  .mini-hint{margin-top:8px;color:var(--muted);font-size:.86rem;font-weight:700}
+
+  .game-overlay{
+    position:fixed;inset:0;z-index:1000;display:none;
+    background:radial-gradient(circle at 50% 0%,#fff0f6 0%,#f2eaff 48%,#e7f8f3 100%);
+    padding:18px;overflow:auto;
+  }
+  .game-overlay.show{display:block}
+  .game-shell{max-width:1050px;margin:0 auto;min-height:100%;display:flex;flex-direction:column}
+  .game-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .game-back{border:0;background:#fff;box-shadow:0 8px 20px rgba(70,42,62,.1);padding:10px 15px;border-radius:999px;font:inherit;font-weight:900;cursor:pointer;color:var(--ink)}
+  .game-title{text-align:center;flex:1;font-size:1.4rem;font-weight:900}
+  .game-stats{min-width:190px;text-align:right;font-weight:900;color:#7b5870}
+  .heart-count{color:#d84d79}
+  .game-intro{text-align:center;margin:8px 0 12px;color:#6c5666;font-weight:700}
+  .game-board{
+    position:relative;flex:1;min-height:560px;margin:8px 0 12px;border-radius:30px;overflow:hidden;
+    border:2px solid rgba(255,255,255,.9);
+    background:
+      linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,.75)),
+      radial-gradient(circle at 20% 20%,rgba(239,126,156,.18),transparent 26%),
+      radial-gradient(circle at 80% 30%,rgba(199,183,238,.2),transparent 26%),
+      linear-gradient(180deg,#e7f8ff,#fff8fb 58%,#f3ffe8);
+    box-shadow:var(--shadow);
+    touch-action:none;
+  }
+  .game-board:before{content:'💗';position:absolute;left:7%;top:10%;font-size:28px;opacity:.35}.game-board:after{content:'♡';position:absolute;right:7%;top:22%;font-size:40px;opacity:.28}
+  .cage{position:absolute;right:5%;bottom:8%;width:180px;height:205px;border:10px solid #80657a;border-radius:18px 18px 28px 28px;background:rgba(255,255,255,.3);box-shadow:0 12px 30px rgba(70,42,62,.16);z-index:2}
+  .cage:before{content:'🔒';position:absolute;left:50%;top:-38px;transform:translateX(-50%);font-size:28px}
+  .bar{position:absolute;top:0;bottom:0;width:9px;background:#a7899a;box-shadow:inset 2px 0 rgba(255,255,255,.6);}
+  .bar.b1{left:22px}.bar.b2{left:51px}.bar.b3{left:80px}.bar.b4{left:109px}.bar.b5{left:138px}
+  .cage-door{position:absolute;inset:0;border:0;background:transparent;cursor:default}
+  .game-her{position:absolute;left:50%;bottom:4px;transform:translateX(-50%);width:145px;height:145px;object-fit:contain;filter:drop-shadow(0 8px 8px rgba(70,42,62,.16));z-index:3}
+  .player{position:absolute;left:12%;bottom:8%;width:120px;height:120px;object-fit:contain;z-index:4;user-select:none;filter:drop-shadow(0 10px 9px rgba(70,42,62,.16))}
+  .heart{position:absolute;width:34px;height:34px;display:grid;place-items:center;font-size:30px;z-index:5;user-select:none;pointer-events:none;filter:drop-shadow(0 4px 6px rgba(70,42,62,.15));will-change:transform}
+  .game-tip{position:absolute;left:50%;top:16px;transform:translateX(-50%);padding:9px 13px;border-radius:999px;background:rgba(255,255,255,.9);font-size:.82rem;font-weight:900;color:#684f61;z-index:6;white-space:nowrap}
+  .cutscene{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:rgba(56,40,58,.18);backdrop-filter:blur(5px);z-index:20;padding:20px}
+  .cutscene.show{display:flex}
+  .scene-card{width:min(760px,100%);text-align:center;background:#fff;border-radius:30px;padding:28px 20px;box-shadow:0 24px 70px rgba(56,40,58,.28);border:2px solid #ffd3df}
+  .scene-stage{position:relative;height:265px;margin:8px 0 12px;overflow:hidden;border-radius:22px;background:linear-gradient(180deg,#fff4f8,#f2efff)}
+  .scene-her,.scene-him{position:absolute;bottom:12px;width:150px;height:150px;object-fit:contain;filter:drop-shadow(0 8px 8px rgba(70,42,62,.14));transition:all .9s ease}
+  .scene-her{left:24%}.scene-him{right:24%}
+  .scene-her.released{left:37%}.scene-him.kiss{right:37%}
+  .scene-kiss{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) scale(.2);font-size:70px;opacity:0;transition:.6s ease;z-index:4}
+  .scene-kiss.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  .scene-cage{position:absolute;left:20%;bottom:18px;width:180px;height:170px;border:9px solid #80657a;border-radius:16px 16px 24px 24px;opacity:1;transition:.6s ease}
+  .scene-cage.gone{opacity:0;transform:scale(1.1)}
+  .scene-bar{position:absolute;top:0;bottom:0;width:8px;background:#a7899a}
+  .scene-bar:nth-child(1){left:25px}.scene-bar:nth-child(2){left:58px}.scene-bar:nth-child(3){left:91px}.scene-bar:nth-child(4){left:124px}
+  .scene-text{font-size:1.18rem;font-weight:900;line-height:1.5}.scene-sub{color:var(--muted);font-weight:700;margin-top:5px}
+  .game-start-card{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);z-index:10;padding:20px}
+  .game-start-card.hide{display:none}
+  .start-inner{background:#fff;border:2px solid #ffd3df;box-shadow:var(--shadow);padding:28px 22px;border-radius:28px;text-align:center;max-width:560px}
+  .start-inner h2{margin:0 0 8px}.start-inner p{color:var(--muted);font-weight:700;line-height:1.5}
+  .start-btn,.scene-btn{border:0;cursor:pointer;font:inherit;font-weight:900;padding:12px 18px;border-radius:999px;background:var(--ink);color:#fff;margin-top:10px}
+
   /* Day color cues */
   [data-day="1"] .dot{border-color:var(--peach)}
   [data-day="1"] .timeline::before{background:linear-gradient(var(--peach),var(--rose),var(--lav))}
@@ -160,12 +226,57 @@
     <button type="button" class="nav-btn" id="nextBtn">Next Day →</button>
   </div>
 
+  <div class="mini-wrap">
+    <button type="button" class="minigame-launch" id="minigameLaunch">💗 Play Minigame 💗</button>
+    <div class="mini-hint">A tiny side quest: collect the hearts and rescue her! 💕</div>
+  </div>
+
   <main id="dayContainer"></main>
 
   <section class="footer-card">
     <div class="footer-heart">💗</div>
     <h2>Three days. One adventure. Us.</h2>
     <p>Happy Anniversary!!</p>
+  </section>
+
+  <section class="game-overlay" id="gameOverlay" aria-hidden="true">
+    <div class="game-shell">
+      <div class="game-top">
+        <button type="button" class="game-back" id="gameBack">← Back to Our Trip</button>
+        <div class="game-title">💗 Rescue Her! 💗</div>
+        <div class="game-stats">Hearts: <span class="heart-count" id="heartCount">0</span> / 20</div>
+      </div>
+      <div class="game-intro">Move him around and collect 20 falling hearts. Then… go get your girl. ❤️</div>
+      <div class="game-board" id="gameBoard">
+        <div class="game-tip">Use WASD or the arrow keys • Collect every heart!</div>
+        <div class="cage" id="gameCage" aria-label="Her is waiting in a cage">
+          <div class="bar b1"></div><div class="bar b2"></div><div class="bar b3"></div><div class="bar b4"></div><div class="bar b5"></div>
+          <img class="game-her" src="res/her.png" alt="Her character"/>
+        </div>
+        <img class="player" id="gamePlayer" src="res/him.png" alt="His character" draggable="false"/>
+        <div class="game-start-card" id="gameStartCard">
+          <div class="start-inner">
+            <h2>One tiny mission. 💕</h2>
+            <p>She is stuck in the love dungeon! Collect <strong>20 hearts</strong> to open the cage and reunite with your girl.</p>
+            <button type="button" class="start-btn" id="gameStartBtn">Start Game 💗</button>
+          </div>
+        </div>
+        <div class="cutscene" id="cutscene">
+          <div class="scene-card">
+            <h2>💖 SHE'S FREE! 💖</h2>
+            <div class="scene-stage">
+              <div class="scene-cage" id="sceneCage"><div class="scene-bar"></div><div class="scene-bar"></div><div class="scene-bar"></div><div class="scene-bar"></div></div>
+              <img class="scene-her" id="sceneHer" src="res/her.png" alt="Her character"/>
+              <img class="scene-him" id="sceneHim" src="res/him.png" alt="His character"/>
+              <div class="scene-kiss" id="sceneKiss">💋❤️</div>
+            </div>
+            <div class="scene-text" id="sceneText">The cage opens… and she runs straight to you. 🥹</div>
+            <div class="scene-sub" id="sceneSub">Because you collected all 20 hearts for her.</div>
+            <button type="button" class="scene-btn" id="sceneBack" style="display:none">Back to Our Trip 💕</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </div>
 
@@ -324,6 +435,206 @@ dayBtns.forEach((button, index) => {
 document.addEventListener('keydown', function(e){
   if (e.key === 'ArrowRight') nextDay();
   if (e.key === 'ArrowLeft') previousDay();
+});
+
+// ===== Tiny Anniversary Minigame =====
+const gameOverlay = document.getElementById('gameOverlay');
+const gameBoard = document.getElementById('gameBoard');
+const gamePlayer = document.getElementById('gamePlayer');
+const heartCountEl = document.getElementById('heartCount');
+const gameStartCard = document.getElementById('gameStartCard');
+const gameStartBtn = document.getElementById('gameStartBtn');
+const gameBack = document.getElementById('gameBack');
+const cutscene = document.getElementById('cutscene');
+const gameCage = document.getElementById('gameCage');
+const sceneCage = document.getElementById('sceneCage');
+const sceneHer = document.getElementById('sceneHer');
+const sceneHim = document.getElementById('sceneHim');
+const sceneKiss = document.getElementById('sceneKiss');
+const sceneText = document.getElementById('sceneText');
+const sceneSub = document.getElementById('sceneSub');
+const sceneBack = document.getElementById('sceneBack');
+
+let gameRunning = false;
+let gameHearts = [];
+let collected = 0;
+let rafId = null;
+let lastSpawn = 0;
+let keys = {};
+let playerX = 12;
+let playerY = 8;
+let gameFinished = false;
+
+function resetPlayer(){
+  playerX = 12;
+  playerY = 8;
+  gamePlayer.style.left = playerX + '%';
+  gamePlayer.style.bottom = playerY + '%';
+}
+
+function clearHearts(){
+  gameHearts.forEach(h => h.el.remove());
+  gameHearts = [];
+}
+
+function openGame(){
+  gameOverlay.classList.add('show');
+  gameOverlay.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+  startFreshGame();
+}
+
+function closeGame(){
+  stopGame();
+  gameOverlay.classList.remove('show');
+  gameOverlay.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+
+function startFreshGame(){
+  stopGame();
+  clearHearts();
+  collected = 0;
+  heartCountEl.textContent = '0';
+  resetPlayer();
+  gameFinished = false;
+  cutscene.classList.remove('show');
+  gameCage.style.opacity = '1';
+  gameStartCard.classList.remove('hide');
+  sceneCage.classList.remove('gone');
+  sceneHer.classList.remove('released');
+  sceneHim.classList.remove('kiss');
+  sceneKiss.classList.remove('show');
+  sceneText.textContent = 'The cage opens… and she runs straight to you. 🥹';
+  sceneSub.textContent = 'Because you collected all 20 hearts for her.';
+  sceneBack.style.display = 'none';
+}
+
+function startGame(){
+  gameStartCard.classList.add('hide');
+  gameRunning = true;
+  lastSpawn = performance.now();
+  for(let i=0;i<6;i++) spawnHeart(true);
+  rafId = requestAnimationFrame(gameLoop);
+}
+
+function stopGame(){
+  gameRunning = false;
+  if(rafId) cancelAnimationFrame(rafId);
+  rafId = null;
+}
+
+function spawnHeart(initial=false){
+  const rect = gameBoard.getBoundingClientRect();
+  const el = document.createElement('div');
+  el.className = 'heart';
+  el.textContent = ['❤️','💗','💕'][Math.floor(Math.random()*3)];
+  const x = 5 + Math.random()*88;
+  const y = initial ? Math.random()*50 : -4;
+  el.style.left = x + '%';
+  el.style.top = y + '%';
+  gameBoard.appendChild(el);
+  gameHearts.push({el,x,y,speed:7 + Math.random()*5});
+}
+
+function movePlayer(dt){
+  const speed = 28; // percentage points per second
+  if(keys['ArrowLeft'] || keys['a'] || keys['A']) playerX -= speed*dt/10;
+  if(keys['ArrowRight'] || keys['d'] || keys['D']) playerX += speed*dt/10;
+  if(keys['ArrowUp'] || keys['w'] || keys['W']) playerY += speed*dt/10;
+  if(keys['ArrowDown'] || keys['s'] || keys['S']) playerY -= speed*dt/10;
+  playerX = Math.max(2,Math.min(82,playerX));
+  playerY = Math.max(2,Math.min(77,playerY));
+  gamePlayer.style.left = playerX + '%';
+  gamePlayer.style.bottom = playerY + '%';
+}
+
+function intersects(a,b){
+  const ar=a.getBoundingClientRect(), br=b.getBoundingClientRect();
+  return ar.left < br.right && ar.right > br.left && ar.top < br.bottom && ar.bottom > br.top;
+}
+
+function gameLoop(now){
+  if(!gameRunning) return;
+  const dt = Math.min(.035,(now-(gameLoop.last||now))/1000);
+  gameLoop.last = now;
+  movePlayer(dt);
+  if(now-lastSpawn > 850){ spawnHeart(false); lastSpawn=now; }
+
+  const boardRect = gameBoard.getBoundingClientRect();
+  for(let i=gameHearts.length-1;i>=0;i--){
+    const h=gameHearts[i];
+    h.y += h.speed*dt;
+    h.el.style.top = h.y + '%';
+    if(intersects(gamePlayer,h.el)){
+      h.el.remove();
+      gameHearts.splice(i,1);
+      collected++;
+      heartCountEl.textContent = String(collected);
+      if(collected>=20){
+        finishGame();
+        return;
+      }
+      continue;
+    }
+    if((h.y/100)*boardRect.height > boardRect.height+30){
+      h.el.remove();
+      gameHearts.splice(i,1);
+    }
+  }
+  rafId = requestAnimationFrame(gameLoop);
+}
+gameLoop.last = 0;
+
+function finishGame(){
+  stopGame();
+  clearHearts();
+  gameFinished = true;
+  gameCage.style.opacity = '0.25';
+  setTimeout(()=>{
+    cutscene.classList.add('show');
+    requestAnimationFrame(()=>{
+      sceneCage.classList.add('gone');
+      sceneHer.classList.add('released');
+      sceneHim.classList.add('kiss');
+    });
+    setTimeout(()=>{
+      sceneKiss.classList.add('show');
+      sceneText.textContent = '💋 A little anniversary kiss. 💋';
+      sceneSub.textContent = 'They love each other! ❤️';
+      sceneBack.style.display = 'inline-block';
+    },1100);
+  },450);
+}
+
+document.getElementById('minigameLaunch').addEventListener('click', openGame);
+gameStartBtn.addEventListener('click', startGame);
+gameBack.addEventListener('click', closeGame);
+sceneBack.addEventListener('click', closeGame);
+
+window.addEventListener('keydown', e=>{
+  if(!gameOverlay.classList.contains('show')) return;
+  if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' ','w','a','s','d','W','A','S','D'].includes(e.key)) e.preventDefault();
+  keys[e.key]=true;
+});
+window.addEventListener('keyup', e=>{ keys[e.key]=false; });
+
+// Touch / mouse support so it is still playable on phones.
+let touchTimer=null;
+gameBoard.addEventListener('pointerdown', e=>{
+  if(!gameRunning) return;
+  gameBoard.setPointerCapture?.(e.pointerId);
+  const r=gameBoard.getBoundingClientRect();
+  const dx=e.clientX-r.left-(r.width*(playerX/100));
+  const dy=e.clientY-r.top-(r.height*(1-playerY/100));
+  keys={...keys,ArrowLeft:dx<-30,ArrowRight:dx>30,ArrowUp:dy<-30,ArrowDown:dy>30};
+  clearTimeout(touchTimer);
+});
+gameBoard.addEventListener('pointerup', ()=>{
+  keys.ArrowLeft=false; keys.ArrowRight=false; keys.ArrowUp=false; keys.ArrowDown=false;
+});
+gameBoard.addEventListener('pointerleave', ()=>{
+  keys.ArrowLeft=false; keys.ArrowRight=false; keys.ArrowUp=false; keys.ArrowDown=false;
 });
 
 renderDay(false);
