@@ -227,7 +227,7 @@
   </div>
 
   <div class="mini-wrap">
-    <button type="button" class="minigame-launch" id="minigameLaunch">💗 Play Minigame 💗</button>
+    <button type="button" class="minigame-launch" id="minigameLaunch">💗 Play a Little Love Minigame 💗</button>
     <div class="mini-hint">A tiny side quest: collect the hearts and rescue her! 💕</div>
   </div>
 
@@ -538,7 +538,7 @@ function spawnHeart(initial=false){
 }
 
 function movePlayer(dt){
-  const speed = 28; // percentage points per second
+  const speed = 120; // faster keyboard movement
   if(keys['ArrowLeft'] || keys['a'] || keys['A']) playerX -= speed*dt/10;
   if(keys['ArrowRight'] || keys['d'] || keys['D']) playerX += speed*dt/10;
   if(keys['ArrowUp'] || keys['w'] || keys['W']) playerY += speed*dt/10;
@@ -619,22 +619,45 @@ window.addEventListener('keydown', e=>{
 });
 window.addEventListener('keyup', e=>{ keys[e.key]=false; });
 
-// Touch / mouse support so it is still playable on phones.
-let touchTimer=null;
+// Phone / tablet controls: drag the character directly with your finger.
+let draggingPlayer = false;
+let activePointerId = null;
+
 gameBoard.addEventListener('pointerdown', e=>{
   if(!gameRunning) return;
+  draggingPlayer = true;
+  activePointerId = e.pointerId;
   gameBoard.setPointerCapture?.(e.pointerId);
-  const r=gameBoard.getBoundingClientRect();
-  const dx=e.clientX-r.left-(r.width*(playerX/100));
-  const dy=e.clientY-r.top-(r.height*(1-playerY/100));
-  keys={...keys,ArrowLeft:dx<-30,ArrowRight:dx>30,ArrowUp:dy<-30,ArrowDown:dy>30};
-  clearTimeout(touchTimer);
+  movePlayerToPointer(e);
 });
-gameBoard.addEventListener('pointerup', ()=>{
-  keys.ArrowLeft=false; keys.ArrowRight=false; keys.ArrowUp=false; keys.ArrowDown=false;
+
+gameBoard.addEventListener('pointermove', e=>{
+  if(!gameRunning || !draggingPlayer || e.pointerId !== activePointerId) return;
+  movePlayerToPointer(e);
 });
-gameBoard.addEventListener('pointerleave', ()=>{
-  keys.ArrowLeft=false; keys.ArrowRight=false; keys.ArrowUp=false; keys.ArrowDown=false;
+
+function movePlayerToPointer(e){
+  const r = gameBoard.getBoundingClientRect();
+  const x = ((e.clientX - r.left) / r.width) * 100;
+  const y = 100 - ((e.clientY - r.top) / r.height) * 100;
+  playerX = Math.max(2, Math.min(82, x));
+  playerY = Math.max(2, Math.min(77, y));
+  gamePlayer.style.left = playerX + '%';
+  gamePlayer.style.bottom = playerY + '%';
+}
+
+function stopDragging(e){
+  if(activePointerId !== null && (!e || e.pointerId === activePointerId)){
+    draggingPlayer = false;
+    activePointerId = null;
+  }
+}
+
+gameBoard.addEventListener('pointerup', stopDragging);
+gameBoard.addEventListener('pointercancel', stopDragging);
+gameBoard.addEventListener('lostpointercapture', ()=>{
+  draggingPlayer = false;
+  activePointerId = null;
 });
 
 renderDay(false);
