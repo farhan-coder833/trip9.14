@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Our Anniversary Adventure 💕</title>
+<style>
+  :root{
+    --ink:#38283a;
+    --muted:#786977;
+    --paper:#fffdfb;
+    --rose:#ef7e9c;
+    --rose2:#ffd3df;
+    --peach:#ffb784;
+    --lav:#c7b7ee;
+    --mint:#9ed7c6;
+    --sky:#b9ddf7;
+    --gold:#f4c96b;
+    --shadow:0 18px 50px rgba(70,42,62,.14);
+    --radius:24px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family: ui-rounded, "Trebuchet MS", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(circle at 10% 10%, rgba(255,211,223,.52) 0 9%, transparent 23%),
+      radial-gradient(circle at 90% 18%, rgba(199,183,238,.36) 0 8%, transparent 22%),
+      radial-gradient(circle at 80% 88%, rgba(158,215,198,.28) 0 10%, transparent 23%),
+      linear-gradient(180deg,#fffaf7 0%,#fdf9ff 48%,#fbfffd 100%);
+    min-height:100vh;
+  }
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:24px 18px 70px}
+
+  /* Header */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    border:2px solid rgba(255,255,255,.8);
+    border-radius:34px;
+    padding:34px 28px 22px;
+    background:linear-gradient(135deg,rgba(255,228,235,.9),rgba(245,237,255,.95) 45%,rgba(227,248,241,.92));
+    box-shadow:var(--shadow);
+  }
+  .sparkles{position:absolute;inset:0;pointer-events:none;font-size:18px;opacity:.55}
+  .sparkles span{position:absolute}
+  .sparkles span:nth-child(1){left:8%;top:15%}.sparkles span:nth-child(2){left:42%;top:9%}.sparkles span:nth-child(3){right:10%;top:24%}.sparkles span:nth-child(4){right:22%;bottom:18%}.sparkles span:nth-child(5){left:18%;bottom:11%}
+  .hero-grid{display:grid;grid-template-columns:180px 1fr 180px;align-items:end;gap:16px;position:relative}
+  .person{display:flex;justify-content:center;align-items:end}
+  .person img{width:170px;height:170px;object-fit:contain;filter:drop-shadow(0 10px 10px rgba(75,42,63,.15))}
+  .person:first-child img{transform:translateY(3px)}
+  .person:last-child img{transform:translateY(6px)}
+  .title{text-align:center;padding-bottom:6px}
+  .kicker{font-weight:800;letter-spacing:.13em;text-transform:uppercase;font-size:.78rem;color:#9b5c77}
+  h1{margin:8px 0 8px;font-size:clamp(2rem,5vw,4rem);line-height:.98}
+  .subtitle{max-width:680px;margin:0 auto;color:#6c5666;font-size:1.05rem;line-height:1.55}
+  .locked{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:9px 14px;border-radius:999px;background:#fff6fa;border:1px solid #ffd3e0;font-size:.88rem;font-weight:800;color:#934d69}
+
+  /* Controls */
+  .controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:18px 0}
+  .day-btn,.nav-btn{
+    border:0;cursor:pointer;font:inherit;font-weight:800;color:var(--ink);
+    border-radius:999px;padding:11px 16px;background:white;box-shadow:0 8px 20px rgba(70,42,62,.08);
+    transition:.2s transform,.2s box-shadow,.2s background;
+  }
+  .day-btn:hover,.nav-btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(70,42,62,.12)}
+  .day-btn.active{background:var(--ink);color:white}
+  .nav-row{display:flex;justify-content:center;gap:10px;margin:6px 0 20px}
+  .nav-btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+
+  /* Day title */
+  .day-header{
+    display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+    margin:8px 0 16px;
+  }
+  .day-title{font-size:1.6rem;font-weight:900}
+  .day-note{color:var(--muted);font-weight:700}
+
+  /* Timeline */
+  .timeline{position:relative}
+  .timeline::before{content:"";position:absolute;left:31px;top:0;bottom:0;width:4px;background:linear-gradient(var(--rose),var(--lav),var(--mint));border-radius:4px}
+  .stop{position:relative;display:grid;grid-template-columns:64px 1fr;gap:16px;margin:0 0 18px}
+  .dot{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:#fff;border:4px solid var(--rose);box-shadow:0 10px 24px rgba(70,42,62,.12);font-size:25px;z-index:1}
+  .card{background:rgba(255,255,255,.92);border:1px solid rgba(115,84,103,.13);border-radius:var(--radius);padding:19px 20px;box-shadow:0 10px 28px rgba(70,42,62,.08)}
+  .time{font-size:.86rem;font-weight:900;color:#9c4c6b;letter-spacing:.02em}
+  .activity{font-size:1.28rem;font-weight:900;margin:4px 0 8px}
+  .meta{display:flex;flex-wrap:wrap;gap:7px;margin:7px 0 10px}
+  .pill{display:inline-flex;align-items:center;gap:5px;padding:6px 10px;border-radius:999px;background:#f7f1f7;color:#5e4b5a;font-size:.82rem;font-weight:800}
+  .details{display:grid;gap:5px;color:#6e5b69;line-height:1.5}
+  .details strong{color:var(--ink)}
+  .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px}
+  .link{display:inline-flex;align-items:center;gap:6px;text-decoration:none;padding:8px 11px;background:#fff3f7;border:1px solid #ffd7e3;border-radius:12px;font-size:.83rem;font-weight:900}
+  .link:hover{background:#ffe6ee}
+  .option{border-left:4px solid var(--peach);padding:8px 0 8px 12px;margin-top:8px}
+
+  /* Character moment */
+  .character-moment{margin:22px 0 18px;border-radius:28px;padding:16px 18px;background:linear-gradient(90deg,#fff4f8,#fff,#f4efff);border:1px dashed #e6bfd0;display:flex;align-items:center;gap:14px}
+  .character-moment img{width:92px;height:92px;object-fit:contain;flex:0 0 auto;filter:drop-shadow(0 7px 9px rgba(75,42,63,.12))}
+  .bubble{background:white;border-radius:18px;padding:12px 15px;box-shadow:0 7px 18px rgba(70,42,62,.07);font-weight:800;line-height:1.45;position:relative}
+  .bubble::before{content:"";position:absolute;left:-9px;top:26px;width:18px;height:18px;background:white;transform:rotate(45deg)}
+
+  /* Footer */
+  .footer-card{margin-top:28px;text-align:center;border-radius:28px;padding:24px;background:rgba(255,255,255,.85);border:1px solid rgba(115,84,103,.12);box-shadow:var(--shadow)}
+  .footer-heart{font-size:2rem}
+  .footer-card h2{margin:4px 0 6px}
+  .footer-card p{margin:0;color:var(--muted);line-height:1.5}
+
+  /* Day color cues */
+  [data-day="1"] .dot{border-color:var(--peach)}
+  [data-day="1"] .timeline::before{background:linear-gradient(var(--peach),var(--rose),var(--lav))}
+  [data-day="2"] .dot{border-color:var(--mint)}
+  [data-day="2"] .timeline::before{background:linear-gradient(var(--mint),var(--sky),var(--rose))}
+  [data-day="3"] .dot{border-color:var(--sky)}
+  [data-day="3"] .timeline::before{background:linear-gradient(var(--sky),var(--lav),var(--gold))}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:120px 1fr 120px}
+    .person img{width:118px;height:118px}
+  }
+  @media (max-width:700px){
+    .hero{padding:24px 14px 14px}
+    .hero-grid{grid-template-columns:1fr;gap:0}
+    .title{order:0}.person{display:none}
+    .timeline::before{left:20px}
+    .stop{grid-template-columns:42px 1fr;gap:10px}
+    .dot{width:42px;height:42px;font-size:18px;border-width:3px}
+    .card{padding:16px}
+    .character-moment img{width:74px;height:74px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div class="sparkles"><span>✦</span><span>♡</span><span>✧</span><span>♡</span><span>✦</span></div>
+    <div class="hero-grid">
+      <div class="person"><img src="res/her.png" alt="Her character" /></div>
+      <div class="title">
+        <div class="kicker">Anniversary Adventure • September 19th–21st</div>
+        <h1>Our Big Little Getaway 💕</h1>
+        <p class="subtitle">Three days of apples, sushi, soccer, ghosts, dinosaurs, nature, good food, and a whole lot of us.</p>
+        <div class="locked">🔒 The plan is complete — just enjoy the adventure!</div>
+      </div>
+      <div class="person"><img src="res/him.png" alt="His character" /></div>
+    </div>
+  </section>
+
+  <div class="controls" id="dayControls">
+    <button class="day-btn active" data-day-btn="0">🍎 Sept 19</button>
+    <button class="day-btn" data-day-btn="1">🌲 Sept 20</button>
+    <button class="day-btn" data-day-btn="2">🌄 Sept 21</button>
+  </div>
+  <div class="nav-row">
+    <button class="nav-btn" id="prevBtn">← Previous stop</button>
+    <button class="nav-btn" id="nextBtn">Next stop →</button>
+  </div>
+
+  <main id="dayContainer"></main>
+
+  <section class="footer-card">
+    <div class="footer-heart">💗</div>
+    <h2>Three days. One adventure. Us.</h2>
+    <p>Happy anniversary, love. Now go make some really good memories. 🍎👻🦖❤️</p>
+  </section>
+</div>
+
+<script>
+const days = [
+  {
+    date:'September 19th',
+    note:'🍎 Apples → 🍣 Lunch → ⚽ Soccer → 🌆 Lynchburg → 👻 Ghost Tour → ✨ Yurt',
+    moment:'Today is packed with fun little things we get to experience together. And yes… there is a ghost tour. 👻❤️',
+    character:'her',
+    stops:[
+      {time:'9:00 AM - 11:35 AM', icon:'🍎', title:'Apple Picking', location:'Morris Orchard', cost:'$50', links:[['Morris Orchard — Pick Your Own Apples','https://morrisorchard.com/pick-your-own-apples/']]},
+      {time:'11:35 AM - 11:57 AM', icon:'🚗', title:'Drive to Lunch', location:'Lynchburg, VA', detail:'Estimated Drive Time: 22 Minutes'},
+      {time:'12:00 PM - 1:00 PM', icon:'🍣', title:'Lunch', location:'Mizumi Japanese Bistro, 1125 Main St, Lynchburg, VA 24504', cost:'$80'},
+      {time:'1:00 PM - 1:10 PM', icon:'🚗', title:'Drive/Park to Soccer Game', location:'Shellenberger Field, University of Lynchburg', detail:'Estimated Drive Time: 10 Minutes'},
+      {time:'1:10 PM - 2:00 PM', icon:'⚽', title:'Arrive Early / Park / Walk Around / Get Seats', location:'Shellenberger Field, Lynchburg, VA', cost:'Free', links:[['Shellenberger Field','https://www.lynchburg.edu/venue/lynchburg-va-shellenberger-field/']]},
+      {time:'2:00 PM - 4:00 PM', icon:'⚽', title:'Stephan’s Soccer Game', location:'Shellenberger Field, Lynchburg, VA'},
+      {time:'4:00 PM - 4:12 PM', icon:'🚗', title:'Drive to Riverfront Park', location:'Riverfront Park, Lynchburg, VA', detail:'Estimated Drive Time: 12 Minutes'},
+      {time:'4:15 PM - 5:30 PM', icon:'🌆', title:'Riverfront Park + Downtown Lynchburg Walk', location:'Riverfront Park / Downtown Lynchburg', cost:'Free'},
+      {time:'5:30 PM - 6:45 PM', icon:'🍽️', title:'Casual Dinner', location:'Downtown Lynchburg', cost:'$80-$100', options:['#1: Hueso Loco (Hueso Loco, 1214 Commerce St, Lynchburg, VA 24504)','#2: Bootleggers (Bootleggers, 50 13th Street Lower Bluffwalk, Lynchburg, VA 24504)']},
+      {time:'6:45 PM - 7:30 PM', icon:'🌆', title:'Downtown Lynchburg Walk / Explore', location:'Downtown Lynchburg', cost:'Free'},
+      {time:'7:30 PM - 8:00 PM', icon:'👻', title:'Arrive at Ghost Tour / Check In', location:'Community Market Fountain, Downtown Lynchburg', cost:'Free'},
+      {time:'8:00 PM - 9:00 PM', icon:'👻', title:'Downtown Lynchburg Walking Ghost Tour', location:'Community Market Fountain, Downtown Lynchburg', cost:'$52 for two', links:[['US Ghost Adventures — Lynchburg Ghost Tour','https://usghostadventures.com/lynchburg-ghost-tour/']]},
+      {time:'9:00 PM - 9:40 PM', icon:'🚗', title:'Drive Back to Yurt', location:'1656 Thrashers Creek Rd, Amherst, VA', detail:'Estimated Drive Time: ~45 Minutes'},
+      {time:'9:40 PM - 11:00 PM', icon:'✨', title:'Relax at Yurt / Apples / Cider / Stargazing', location:'Yurt', cost:'$10-$25'}
+    ]
+  },
+  {
+    date:'September 20th',
+    note:'🌲 Nature → 🎵 Sunday Lunch → 🦖 Dinosaurs → 🍣 Anniversary Dinner → ❤️ Yurt Night',
+    moment:'This one is the anniversary day. Nature, dinosaurs, sushi, and then our own little anniversary night at the yurt. ❤️',
+    character:'him',
+    stops:[
+      {time:'9:00 AM - 10:00 AM', icon:'☕', title:'Breakfast', location:'Yurt', cost:'$15-$25'},
+      {time:'10:00 AM - 11:00 AM', icon:'🚗', title:'Drive to Lynchburg', location:'Lynchburg, VA'},
+      {time:'11:00 AM - 12:00 PM', icon:'🌲', title:'🌲 Blackwater Creek Natural Area + Creekside Trail', location:'Blackwater Creek Natural Area, Lynchburg, VA', cost:'Free', details:['Activity: Nature Walk + Creek + Wildlife + Forest Trails'], links:[['Trails of Blackwater Creek','https://www.lynchburgparksandrec.com/trails/trails-of-blackwater-creek/']]},
+      {time:'12:00 PM - 12:15 PM', icon:'🚶', title:'Drive/Walk to Lunch', location:'Downtown Lynchburg'},
+      {time:'12:15 PM - 1:15 PM', icon:'🎵', title:'Sunday Lunch + Live Music', location:'The Water Dog, 1016 Jefferson St, Lynchburg, VA 24504', cost:'$40-$60', links:[['The Water Dog','https://www.thewaterdog.com/']]},
+      {time:'1:15PM - 2:15', icon:'🚗', title:'Drive to Natural Bridge', location:'Natural Bridge, VA'},
+      {time:'2:15 PM - 4:45 PM', icon:'🦖', title:'🦖 Dinosaur Kingdom II', location:'Dinosaur Kingdom II, 5781 S. Lee Highway, Natural Bridge, VA 24578', cost:'$42 for two', details:['Activity: Dinosaurs + Fossil Mining + Dino Dig + MAZEazoic + Weird/Fun Attractions','Note: Open Saturday & Sunday in September, 10:00 AM - 5:00 PM'], links:[['Dinosaur Kingdom II','https://www.dinosaurkingdomii.com/']]},
+      {time:'4:45 PM - 5:30 PM', icon:'🚗', title:'Drive Back to Yurt', location:'1656 Thrashers Creek Rd, Amherst, VA', cost:'Gas'},
+      {time:'5:30 PM - 6:30 PM', icon:'🧸', title:'Relax / Get Ready for Anniversary Dinner', location:'Yurt', cost:'Free'},
+      {time:'6:30 PM - 7:00 PM', icon:'🚗', title:'Drive to Anniversary Dinner', location:'Forest, VA'},
+      {time:'7:00 PM - 8:30 PM', icon:'❤️', title:'❤️ Anniversary Dinner', location:'New Ya-Mada of Forest, 205 Gristmill Dr, Forest, VA 24551', cost:'$125-$150 for two', details:['Food: Sushi, sashimi, ramen, Japanese BBQ/Yakiniku, cocktails & sake'], links:[['New Ya-Mada of Forest','https://newyamadaofforest.com/']]},
+      {time:'8:30 PM - 9:00 PM', icon:'🚗', title:'Drive Back to Yurt', location:'1656 Thrashers Creek Rd, Amherst, VA', cost:'Gas'},
+      {time:'9:00 PM - 11:00 PM', icon:'❤️', title:'❤️ Anniversary Night at the Yurt', location:'Yurt', cost:'$10-$30'}
+    ]
+  },
+  {
+    date:'September 21st',
+    note:'☕ Breakfast → 🌄 Natural Bridge → 🍔 Lexington → 🏺 Antiques → 🛍️ Explore → 🍩 Dessert → 🚗 Home',
+    moment:'Last adventure day! We still have a whole Natural Bridge morning and a little Lexington wandering before the long drive home. 🌄💕',
+    character:'her',
+    stops:[
+      {time:'8:00 AM - 9:00 AM', icon:'☕', title:'Breakfast + Coffee', location:'Yurt', cost:'$15-$25'},
+      {time:'9:00 AM - 9:30 AM', icon:'🧳', title:'Pack Up + Check Out', location:'1656 Thrashers Creek Rd, Amherst, VA', cost:'Free'},
+      {time:'9:30 AM - 10:30 AM', icon:'🚗', title:'Drive to Natural Bridge', location:'Natural Bridge, VA', detail:'Estimated Drive Time: ~1 Hour'},
+      {time:'10:30 AM - 12:30 PM', icon:'🌄', title:'🌄 Natural Bridge State Park', location:'Natural Bridge State Park, 6477 South Lee Highway, Natural Bridge, VA 24578', cost:'Park Admission', details:['Activity: Natural Bridge + Cedar Creek Trail + Forest + Wildlife + Blue Ridge Scenery'], links:[['Virginia State Parks — Natural Bridge','https://www.dcr.virginia.gov/state-parks/natural-bridge']]},
+      {time:'12:30 PM - 1:00 PM', icon:'🚗', title:'Drive to Lunch', location:'Lexington, VA', detail:'Estimated Drive Time: ~30 Minutes'},
+      {time:'1:00 PM - 2:00 PM', icon:'🍔', title:'🍔 Lunch', location:'The Palms, 101 W Nelson St, Lexington, VA 24450', cost:'$40-$60 for two', details:['Food: Burgers + Sandwiches + Fries + American Classics + Drinks','Atmosphere: Old-School Lexington Bar & Grill + Neon Palm Décor'], links:[['The Palms Lexington','https://www.thepalmslex.com/']]},
+      {time:'2:00 PM - 3:00 PM', icon:'🏺', title:'🏺 Duke\'s Lexington Antique Center', location:'Duke\'s Lexington Antique Center, Lexington, VA', cost:'Free to Browse / Optional Shopping', details:['Activity: Antiques + Vintage Items + Collectibles + Weird Finds']},
+      {time:'3:00 PM - 4:00 PM', icon:'🛍️', title:'🛍️ Downtown Lexington Exploring', location:'Downtown Lexington, VA', cost:'$0-$50+', details:['Activity: Local Shops + Specialty Stores + Bookstores + Gifts + Interesting Little Finds']},
+      {time:'4:00 PM - 4:30 PM', icon:'🍩', title:'🍩 Dessert / Snack Stop', location:'Downtown Lexington, VA', cost:'$10-$20'},
+      {time:'4:30 PM - 5:00 PM', icon:'🚶', title:'Final Walk Around Lexington', location:'Downtown Lexington, VA', cost:'Free'},
+      {time:'5:30 PM - 9:00 PM', icon:'🚗', title:'🚗 Drive Back to Chapel Hill', location:'Chapel Hill, NC', detail:'Estimated Drive Time: ~3.5 Hours'}
+    ]
+  }
+];
+
+let dayIndex=0;
+let stopIndex=0;
+const container=document.getElementById('dayContainer');
+const dayBtns=[...document.querySelectorAll('[data-day-btn]')];
+const prevBtn=document.getElementById('prevBtn');
+const nextBtn=document.getElementById('nextBtn');
+
+function render(){
+  const day=days[dayIndex];
+  dayBtns.forEach((b,i)=>b.classList.toggle('active',i===dayIndex));
+  const char=day.character==='her'?'res/her.png':'res/him.png';
+  let html=`<section data-day="${dayIndex+1}">`;
+  html+=`<div class="day-header"><div><div class="day-title">${day.date}</div><div class="day-note">${day.note}</div></div><div class="pill">${day.stops.length} stops 💕</div></div>`;
+  html+=`<div class="character-moment"><img src="${char}" alt="Trip character"/><div class="bubble">${day.moment}</div></div>`;
+  html+=`<div class="timeline">`;
+  day.stops.forEach((s,i)=>{
+    html+=`<article class="stop" id="stop-${dayIndex}-${i}"><div class="dot">${s.icon}</div><div class="card"><div class="time">${s.time}</div><div class="activity">${s.title}</div>`;
+    html+=`<div class="meta">`;
+    if(s.location) html+=`<span class="pill">📍 ${s.location}</span>`;
+    if(s.cost) html+=`<span class="pill">💵 Estimated Cost: ${s.cost}</span>`;
+    if(s.detail) html+=`<span class="pill">⏱️ ${s.detail}</span>`;
+    html+=`</div>`;
+    if(s.details?.length){ html+=`<div class="details">${s.details.map(d=>`<div>${d}</div>`).join('')}</div>`; }
+    if(s.options?.length){ html+=s.options.map(o=>`<div class="option"><strong>${o}</strong></div>`).join(''); }
+    if(s.links?.length){ html+=`<div class="links">${s.links.map(([label,url])=>`<a class="link" href="${url}" target="_blank" rel="noopener noreferrer">🔗 ${label}</a>`).join('')}</div>`; }
+    html+=`</div></article>`;
+  });
+  html+=`</div></section>`;
+  container.innerHTML=html;
+  prevBtn.disabled=(dayIndex===0 && stopIndex===0);
+  nextBtn.disabled=(dayIndex===days.length-1 && stopIndex===day.stops.length-1);
+  const target=document.getElementById(`stop-${dayIndex}-${stopIndex}`);
+  if(target) target.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function move(delta){
+  let d=dayIndex, s=stopIndex+delta;
+  if(s<0){ if(d>0){d--;s=days[d].stops.length-1;} else return; }
+  if(s>=days[d].stops.length){ if(d<days.length-1){d++;s=0;} else return; }
+  dayIndex=d; stopIndex=s; render();
+}
+
+dayBtns.forEach((b,i)=>b.addEventListener('click',()=>{dayIndex=i;stopIndex=0;render();}));
+prevBtn.addEventListener('click',()=>move(-1));
+nextBtn.addEventListener('click',()=>move(1));
+
+// Keyboard navigation makes it feel like an adventure "next stop" viewer.
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight') move(1);
+  if(e.key==='ArrowLeft') move(-1);
+});
+
+render();
+</script>
+</body>
+</html>
