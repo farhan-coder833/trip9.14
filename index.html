@@ -47,7 +47,11 @@
   }
   .sparkles{position:absolute;inset:0;pointer-events:none;font-size:18px;opacity:.55}
   .sparkles span{position:absolute}
-  .sparkles span:nth-child(1){left:8%;top:15%}.sparkles span:nth-child(2){left:42%;top:9%}.sparkles span:nth-child(3){right:10%;top:24%}.sparkles span:nth-child(4){right:22%;bottom:18%}.sparkles span:nth-child(5){left:18%;bottom:11%}
+  .sparkles span:nth-child(1){left:8%;top:15%}
+  .sparkles span:nth-child(2){left:42%;top:9%}
+  .sparkles span:nth-child(3){right:10%;top:24%}
+  .sparkles span:nth-child(4){right:22%;bottom:18%}
+  .sparkles span:nth-child(5){left:18%;bottom:11%}
   .hero-grid{display:grid;grid-template-columns:180px 1fr 180px;align-items:end;gap:16px;position:relative}
   .person{display:flex;justify-content:center;align-items:end}
   .person img{width:170px;height:170px;object-fit:contain;filter:drop-shadow(0 10px 10px rgba(75,42,63,.15))}
@@ -62,50 +66,207 @@
   /* Controls */
   .controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:18px 0}
   .day-btn,.nav-btn{
-    border:0;cursor:pointer;font:inherit;font-weight:800;color:var(--ink);
-    border-radius:999px;padding:11px 16px;background:white;box-shadow:0 8px 20px rgba(70,42,62,.08);
+    border:0;
+    cursor:pointer;
+    font:inherit;
+    font-weight:800;
+    color:var(--ink);
+    border-radius:999px;
+    padding:11px 16px;
+    background:white;
+    box-shadow:0 8px 20px rgba(70,42,62,.08);
     transition:.2s transform,.2s box-shadow,.2s background;
   }
-  .day-btn:hover,.nav-btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(70,42,62,.12)}
+  .day-btn:hover,.nav-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 26px rgba(70,42,62,.12)
+  }
   .day-btn.active{background:var(--ink);color:white}
   .nav-row{display:flex;justify-content:center;gap:10px;margin:6px 0 20px}
   .nav-btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
 
   /* Day title */
   .day-header{
-    display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
     margin:8px 0 16px;
   }
   .day-title{font-size:1.6rem;font-weight:900}
   .day-note{color:var(--muted);font-weight:700}
 
+  .spending-card{
+    margin:0 0 18px;
+    padding:17px 19px;
+    border-radius:22px;
+    background:linear-gradient(135deg,#fff8fb,#fff,#f7f2ff);
+    border:1px solid #ead6e1;
+    box-shadow:0 10px 24px rgba(70,42,62,.08);
+  }
+  .spending-label{
+    color:var(--muted);
+    font-size:.82rem;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+  }
+  .spending-amount{
+    font-size:1.55rem;
+    font-weight:900;
+    margin-top:3px;
+  }
+  .final-total{
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px dashed #dec8d6;
+  }
+  .final-total .spending-amount{
+    font-size:1.8rem;
+  }
+
   /* Timeline */
   .timeline{position:relative}
-  .timeline::before{content:"";position:absolute;left:31px;top:0;bottom:0;width:4px;background:linear-gradient(var(--rose),var(--lav),var(--mint));border-radius:4px}
-  .stop{position:relative;display:grid;grid-template-columns:64px 1fr;gap:16px;margin:0 0 18px}
-  .dot{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:#fff;border:4px solid var(--rose);box-shadow:0 10px 24px rgba(70,42,62,.12);font-size:25px;z-index:1}
-  .card{background:rgba(255,255,255,.92);border:1px solid rgba(115,84,103,.13);border-radius:var(--radius);padding:19px 20px;box-shadow:0 10px 28px rgba(70,42,62,.08);transition:.25s transform,.25s box-shadow,.25s border-color}
-  .stop.active-stop .card{transform:translateY(-3px);box-shadow:0 16px 34px rgba(70,42,62,.14);border-color:#ef9db5}
-  .stop.active-stop .dot{transform:scale(1.08);box-shadow:0 12px 28px rgba(70,42,62,.18)}
-  .time{font-size:.86rem;font-weight:900;color:#9c4c6b;letter-spacing:.02em}
-  .activity{font-size:1.28rem;font-weight:900;margin:4px 0 8px}
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:31px;
+    top:0;
+    bottom:0;
+    width:4px;
+    background:linear-gradient(var(--rose),var(--lav),var(--mint));
+    border-radius:4px
+  }
+  .stop{
+    position:relative;
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:16px;
+    margin:0 0 18px
+  }
+  .dot{
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:#fff;
+    border:4px solid var(--rose);
+    box-shadow:0 10px 24px rgba(70,42,62,.12);
+    font-size:25px;
+    z-index:1
+  }
+  .card{
+    background:rgba(255,255,255,.92);
+    border:1px solid rgba(115,84,103,.13);
+    border-radius:var(--radius);
+    padding:19px 20px;
+    box-shadow:0 10px 28px rgba(70,42,62,.08);
+    transition:.25s transform,.25s box-shadow,.25s border-color
+  }
+  .stop.active-stop .card{
+    transform:translateY(-3px);
+    box-shadow:0 16px 34px rgba(70,42,62,.14);
+    border-color:#ef9db5
+  }
+  .stop.active-stop .dot{
+    transform:scale(1.08);
+    box-shadow:0 12px 28px rgba(70,42,62,.18)
+  }
+  .time{
+    font-size:.86rem;
+    font-weight:900;
+    color:#9c4c6b;
+    letter-spacing:.02em
+  }
+  .activity{
+    font-size:1.28rem;
+    font-weight:900;
+    margin:4px 0 8px
+  }
   .meta{display:flex;flex-wrap:wrap;gap:7px;margin:7px 0 10px}
-  .pill{display:inline-flex;align-items:center;gap:5px;padding:6px 10px;border-radius:999px;background:#f7f1f7;color:#5e4b5a;font-size:.82rem;font-weight:800}
+  .pill{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    padding:6px 10px;
+    border-radius:999px;
+    background:#f7f1f7;
+    color:#5e4b5a;
+    font-size:.82rem;
+    font-weight:800
+  }
   .details{display:grid;gap:5px;color:#6e5b69;line-height:1.5}
   .details strong{color:var(--ink)}
   .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px}
-  .link{display:inline-flex;align-items:center;gap:6px;text-decoration:none;padding:8px 11px;background:#fff3f7;border:1px solid #ffd7e3;border-radius:12px;font-size:.83rem;font-weight:900}
+  .link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    text-decoration:none;
+    padding:8px 11px;
+    background:#fff3f7;
+    border:1px solid #ffd7e3;
+    border-radius:12px;
+    font-size:.83rem;
+    font-weight:900
+  }
   .link:hover{background:#ffe6ee}
-  .option{border-left:4px solid var(--peach);padding:8px 0 8px 12px;margin-top:8px}
+  .option{
+    border-left:4px solid var(--peach);
+    padding:8px 0 8px 12px;
+    margin-top:8px
+  }
 
   /* Character moment */
-  .character-moment{margin:22px 0 18px;border-radius:28px;padding:16px 18px;background:linear-gradient(90deg,#fff4f8,#fff,#f4efff);border:1px dashed #e6bfd0;display:flex;align-items:center;gap:14px}
-  .character-moment img{width:92px;height:92px;object-fit:contain;flex:0 0 auto;filter:drop-shadow(0 7px 9px rgba(75,42,63,.12))}
-  .bubble{background:white;border-radius:18px;padding:12px 15px;box-shadow:0 7px 18px rgba(70,42,62,.07);font-weight:800;line-height:1.45;position:relative}
-  .bubble::before{content:"";position:absolute;left:-9px;top:26px;width:18px;height:18px;background:white;transform:rotate(45deg)}
+  .character-moment{
+    margin:22px 0 18px;
+    border-radius:28px;
+    padding:16px 18px;
+    background:linear-gradient(90deg,#fff4f8,#fff,#f4efff);
+    border:1px dashed #e6bfd0;
+    display:flex;
+    align-items:center;
+    gap:14px
+  }
+  .character-moment img{
+    width:92px;
+    height:92px;
+    object-fit:contain;
+    flex:0 0 auto;
+    filter:drop-shadow(0 7px 9px rgba(75,42,63,.12))
+  }
+  .bubble{
+    background:white;
+    border-radius:18px;
+    padding:12px 15px;
+    box-shadow:0 7px 18px rgba(70,42,62,.07);
+    font-weight:800;
+    line-height:1.45;
+    position:relative
+  }
+  .bubble::before{
+    content:"";
+    position:absolute;
+    left:-9px;
+    top:26px;
+    width:18px;
+    height:18px;
+    background:white;
+    transform:rotate(45deg)
+  }
 
   /* Footer */
-  .footer-card{margin-top:28px;text-align:center;border-radius:28px;padding:24px;background:rgba(255,255,255,.85);border:1px solid rgba(115,84,103,.12);box-shadow:var(--shadow)}
+  .footer-card{
+    margin-top:28px;
+    text-align:center;
+    border-radius:28px;
+    padding:24px;
+    background:rgba(255,255,255,.85);
+    border:1px solid rgba(115,84,103,.12);
+    box-shadow:var(--shadow)
+  }
   .footer-heart{font-size:2rem}
   .footer-card h2{margin:4px 0 6px}
   .footer-card p{margin:0;color:var(--muted);line-height:1.5}
@@ -113,30 +274,74 @@
   /* Minigame */
   .mini-wrap{text-align:center;margin:10px 0 24px}
   .minigame-launch{
-    border:0;cursor:pointer;font:inherit;font-weight:900;color:#fff;
-    padding:14px 20px;border-radius:999px;
+    border:0;
+    cursor:pointer;
+    font:inherit;
+    font-weight:900;
+    color:#fff;
+    padding:14px 20px;
+    border-radius:999px;
     background:linear-gradient(135deg,#ef7e9c,#c7b7ee);
     box-shadow:0 10px 24px rgba(70,42,62,.15);
-    transition:transform .2s, box-shadow .2s;
+    transition:transform .2s, box-shadow .2s
   }
-  .minigame-launch:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(70,42,62,.2)}
-  .mini-hint{margin-top:8px;color:var(--muted);font-size:.86rem;font-weight:700}
+  .minigame-launch:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 28px rgba(70,42,62,.2)
+  }
+  .mini-hint{
+    margin-top:8px;
+    color:var(--muted);
+    font-size:.86rem;
+    font-weight:700
+  }
 
   .game-overlay{
-    position:fixed;inset:0;z-index:1000;display:none;
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    display:none;
     background:radial-gradient(circle at 50% 0%,#fff0f6 0%,#f2eaff 48%,#e7f8f3 100%);
-    padding:18px;overflow:auto;
+    padding:18px;
+    overflow:auto
   }
   .game-overlay.show{display:block}
-  .game-shell{max-width:1050px;margin:0 auto;min-height:100%;display:flex;flex-direction:column}
-  .game-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-  .game-back{border:0;background:#fff;box-shadow:0 8px 20px rgba(70,42,62,.1);padding:10px 15px;border-radius:999px;font:inherit;font-weight:900;cursor:pointer;color:var(--ink)}
+  .game-shell{
+    max-width:1050px;
+    margin:0 auto;
+    min-height:100%;
+    display:flex;
+    flex-direction:column
+  }
+  .game-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap
+  }
+  .game-back{
+    border:0;
+    background:#fff;
+    box-shadow:0 8px 20px rgba(70,42,62,.1);
+    padding:10px 15px;
+    border-radius:999px;
+    font:inherit;
+    font-weight:900;
+    cursor:pointer;
+    color:var(--ink)
+  }
   .game-title{text-align:center;flex:1;font-size:1.4rem;font-weight:900}
   .game-stats{min-width:190px;text-align:right;font-weight:900;color:#7b5870}
   .heart-count{color:#d84d79}
   .game-intro{text-align:center;margin:8px 0 12px;color:#6c5666;font-weight:700}
   .game-board{
-    position:relative;flex:1;min-height:560px;margin:8px 0 12px;border-radius:30px;overflow:hidden;
+    position:relative;
+    flex:1;
+    min-height:560px;
+    margin:8px 0 12px;
+    border-radius:30px;
+    overflow:hidden;
     border:2px solid rgba(255,255,255,.9);
     background:
       linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,.75)),
@@ -144,37 +349,230 @@
       radial-gradient(circle at 80% 30%,rgba(199,183,238,.2),transparent 26%),
       linear-gradient(180deg,#e7f8ff,#fff8fb 58%,#f3ffe8);
     box-shadow:var(--shadow);
-    touch-action:none;
+    touch-action:none
   }
-  .game-board:before{content:'💗';position:absolute;left:7%;top:10%;font-size:28px;opacity:.35}.game-board:after{content:'♡';position:absolute;right:7%;top:22%;font-size:40px;opacity:.28}
-  .cage{position:absolute;right:5%;bottom:8%;width:180px;height:205px;border:10px solid #80657a;border-radius:18px 18px 28px 28px;background:rgba(255,255,255,.3);box-shadow:0 12px 30px rgba(70,42,62,.16);z-index:2}
-  .cage:before{content:'🔒';position:absolute;left:50%;top:-38px;transform:translateX(-50%);font-size:28px}
-  .bar{position:absolute;top:0;bottom:0;width:9px;background:#a7899a;box-shadow:inset 2px 0 rgba(255,255,255,.6);}
-  .bar.b1{left:22px}.bar.b2{left:51px}.bar.b3{left:80px}.bar.b4{left:109px}.bar.b5{left:138px}
-  .cage-door{position:absolute;inset:0;border:0;background:transparent;cursor:default}
-  .game-her{position:absolute;left:50%;bottom:4px;transform:translateX(-50%);width:145px;height:145px;object-fit:contain;filter:drop-shadow(0 8px 8px rgba(70,42,62,.16));z-index:3}
-  .player{position:absolute;left:12%;bottom:8%;width:120px;height:120px;object-fit:contain;z-index:4;user-select:none;filter:drop-shadow(0 10px 9px rgba(70,42,62,.16))}
-  .heart{position:absolute;width:34px;height:34px;display:grid;place-items:center;font-size:30px;z-index:5;user-select:none;pointer-events:none;filter:drop-shadow(0 4px 6px rgba(70,42,62,.15));will-change:transform}
-  .game-tip{position:absolute;left:50%;top:16px;transform:translateX(-50%);padding:9px 13px;border-radius:999px;background:rgba(255,255,255,.9);font-size:.82rem;font-weight:900;color:#684f61;z-index:6;white-space:nowrap}
-  .cutscene{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:rgba(56,40,58,.18);backdrop-filter:blur(5px);z-index:20;padding:20px}
+  .game-board:before{
+    content:'💗';
+    position:absolute;
+    left:7%;
+    top:10%;
+    font-size:28px;
+    opacity:.35
+  }
+  .game-board:after{
+    content:'♡';
+    position:absolute;
+    right:7%;
+    top:22%;
+    font-size:40px;
+    opacity:.28
+  }
+  .cage{
+    position:absolute;
+    right:5%;
+    bottom:8%;
+    width:180px;
+    height:205px;
+    border:10px solid #80657a;
+    border-radius:18px 18px 28px 28px;
+    background:rgba(255,255,255,.3);
+    box-shadow:0 12px 30px rgba(70,42,62,.16);
+    z-index:2
+  }
+  .cage:before{
+    content:'🔒';
+    position:absolute;
+    left:50%;
+    top:-38px;
+    transform:translateX(-50%);
+    font-size:28px
+  }
+  .bar{
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:9px;
+    background:#a7899a;
+    box-shadow:inset 2px 0 rgba(255,255,255,.6)
+  }
+  .bar.b1{left:22px}
+  .bar.b2{left:51px}
+  .bar.b3{left:80px}
+  .bar.b4{left:109px}
+  .bar.b5{left:138px}
+  .cage-door{
+    position:absolute;
+    inset:0;
+    border:0;
+    background:transparent;
+    cursor:default
+  }
+  .game-her{
+    position:absolute;
+    left:50%;
+    bottom:4px;
+    transform:translateX(-50%);
+    width:145px;
+    height:145px;
+    object-fit:contain;
+    filter:drop-shadow(0 8px 8px rgba(70,42,62,.16));
+    z-index:3
+  }
+  .player{
+    position:absolute;
+    left:12%;
+    bottom:8%;
+    width:120px;
+    height:120px;
+    object-fit:contain;
+    z-index:4;
+    user-select:none;
+    filter:drop-shadow(0 10px 9px rgba(70,42,62,.16))
+  }
+  .heart{
+    position:absolute;
+    width:34px;
+    height:34px;
+    display:grid;
+    place-items:center;
+    font-size:30px;
+    z-index:5;
+    user-select:none;
+    pointer-events:none;
+    filter:drop-shadow(0 4px 6px rgba(70,42,62,.15));
+    will-change:transform
+  }
+  .game-tip{
+    position:absolute;
+    left:50%;
+    top:16px;
+    transform:translateX(-50%);
+    padding:9px 13px;
+    border-radius:999px;
+    background:rgba(255,255,255,.9);
+    font-size:.82rem;
+    font-weight:900;
+    color:#684f61;
+    z-index:6;
+    white-space:nowrap
+  }
+  .cutscene{
+    position:absolute;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:rgba(56,40,58,.18);
+    backdrop-filter:blur(5px);
+    z-index:20;
+    padding:20px
+  }
   .cutscene.show{display:flex}
-  .scene-card{width:min(760px,100%);text-align:center;background:#fff;border-radius:30px;padding:28px 20px;box-shadow:0 24px 70px rgba(56,40,58,.28);border:2px solid #ffd3df}
-  .scene-stage{position:relative;height:265px;margin:8px 0 12px;overflow:hidden;border-radius:22px;background:linear-gradient(180deg,#fff4f8,#f2efff)}
-  .scene-her,.scene-him{position:absolute;bottom:12px;width:150px;height:150px;object-fit:contain;filter:drop-shadow(0 8px 8px rgba(70,42,62,.14));transition:all .9s ease}
-  .scene-her{left:24%}.scene-him{right:24%}
-  .scene-her.released{left:37%}.scene-him.kiss{right:37%}
-  .scene-kiss{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) scale(.2);font-size:70px;opacity:0;transition:.6s ease;z-index:4}
-  .scene-kiss.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
-  .scene-cage{position:absolute;left:20%;bottom:18px;width:180px;height:170px;border:9px solid #80657a;border-radius:16px 16px 24px 24px;opacity:1;transition:.6s ease}
-  .scene-cage.gone{opacity:0;transform:scale(1.1)}
-  .scene-bar{position:absolute;top:0;bottom:0;width:8px;background:#a7899a}
-  .scene-bar:nth-child(1){left:25px}.scene-bar:nth-child(2){left:58px}.scene-bar:nth-child(3){left:91px}.scene-bar:nth-child(4){left:124px}
-  .scene-text{font-size:1.18rem;font-weight:900;line-height:1.5}.scene-sub{color:var(--muted);font-weight:700;margin-top:5px}
-  .game-start-card{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);z-index:10;padding:20px}
+  .scene-card{
+    width:min(760px,100%);
+    text-align:center;
+    background:#fff;
+    border-radius:30px;
+    padding:28px 20px;
+    box-shadow:0 24px 70px rgba(56,40,58,.28);
+    border:2px solid #ffd3df
+  }
+  .scene-stage{
+    position:relative;
+    height:265px;
+    margin:8px 0 12px;
+    overflow:hidden;
+    border-radius:22px;
+    background:linear-gradient(180deg,#fff4f8,#f2efff)
+  }
+  .scene-her,.scene-him{
+    position:absolute;
+    bottom:12px;
+    width:150px;
+    height:150px;
+    object-fit:contain;
+    filter:drop-shadow(0 8px 8px rgba(70,42,62,.14));
+    transition:all .9s ease
+  }
+  .scene-her{left:24%}
+  .scene-him{right:24%}
+  .scene-her.released{left:37%}
+  .scene-him.kiss{right:37%}
+  .scene-kiss{
+    position:absolute;
+    left:50%;
+    top:44%;
+    transform:translate(-50%,-50%) scale(.2);
+    font-size:70px;
+    opacity:0;
+    transition:.6s ease;
+    z-index:4
+  }
+  .scene-kiss.show{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(1)
+  }
+  .scene-cage{
+    position:absolute;
+    left:20%;
+    bottom:18px;
+    width:180px;
+    height:170px;
+    border:9px solid #80657a;
+    border-radius:16px 16px 24px 24px;
+    opacity:1;
+    transition:.6s ease
+  }
+  .scene-cage.gone{
+    opacity:0;
+    transform:scale(1.1)
+  }
+  .scene-bar{
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:8px;
+    background:#a7899a
+  }
+  .scene-bar:nth-child(1){left:25px}
+  .scene-bar:nth-child(2){left:58px}
+  .scene-bar:nth-child(3){left:91px}
+  .scene-bar:nth-child(4){left:124px}
+  .scene-text{font-size:1.18rem;font-weight:900;line-height:1.5}
+  .scene-sub{color:var(--muted);font-weight:700;margin-top:5px}
+  .game-start-card{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,.75);
+    z-index:10;
+    padding:20px
+  }
   .game-start-card.hide{display:none}
-  .start-inner{background:#fff;border:2px solid #ffd3df;box-shadow:var(--shadow);padding:28px 22px;border-radius:28px;text-align:center;max-width:560px}
-  .start-inner h2{margin:0 0 8px}.start-inner p{color:var(--muted);font-weight:700;line-height:1.5}
-  .start-btn,.scene-btn{border:0;cursor:pointer;font:inherit;font-weight:900;padding:12px 18px;border-radius:999px;background:var(--ink);color:#fff;margin-top:10px}
+  .start-inner{
+    background:#fff;
+    border:2px solid #ffd3df;
+    box-shadow:var(--shadow);
+    padding:28px 22px;
+    border-radius:28px;
+    text-align:center;
+    max-width:560px
+  }
+  .start-inner h2{margin:0 0 8px}
+  .start-inner p{color:var(--muted);font-weight:700;line-height:1.5}
+  .start-btn,.scene-btn{
+    border:0;
+    cursor:pointer;
+    font:inherit;
+    font-weight:900;
+    padding:12px 18px;
+    border-radius:999px;
+    background:var(--ink);
+    color:#fff;
+    margin-top:10px
+  }
 
   /* Day color cues */
   [data-day="1"] .dot{border-color:var(--peach)}
@@ -188,10 +586,12 @@
     .hero-grid{grid-template-columns:120px 1fr 120px}
     .person img{width:118px;height:118px}
   }
+
   @media (max-width:700px){
     .hero{padding:24px 14px 14px}
     .hero-grid{grid-template-columns:1fr;gap:0}
-    .title{order:0}.person{display:none}
+    .title{order:0}
+    .person{display:none}
     .timeline::before{left:20px}
     .stop{grid-template-columns:42px 1fr;gap:10px}
     .dot{width:42px;height:42px;font-size:18px;border-width:3px}
@@ -200,19 +600,30 @@
   }
 </style>
 </head>
+
 <body>
 <div class="wrap">
+
   <section class="hero">
-    <div class="sparkles"><span>✦</span><span>♡</span><span>✧</span><span>♡</span><span>✦</span></div>
+    <div class="sparkles">
+      <span>✦</span><span>♡</span><span>✧</span><span>♡</span><span>✦</span>
+    </div>
+
     <div class="hero-grid">
-      <div class="person"><img src="res/her.png" alt="Her character" /></div>
+      <div class="person">
+        <img src="res/her.png" alt="Her character" />
+      </div>
+
       <div class="title">
         <div class="kicker">Anniversary Adventure • September 19th–21st</div>
         <h1>Our Big Little Getaway 💕</h1>
         <p class="subtitle">Three days of apples, sushi, soccer, ghosts, dinosaurs, nature, good food, and a whole lot of us.</p>
         <div class="locked">🔒 The plan is complete — just enjoy the adventure!</div>
       </div>
-      <div class="person"><img src="res/him.png" alt="His character" /></div>
+
+      <div class="person">
+        <img src="res/him.png" alt="His character" />
+      </div>
     </div>
   </section>
 
@@ -242,13 +653,18 @@
 
   <section class="game-overlay" id="gameOverlay" aria-hidden="true">
     <div class="game-shell">
+
       <div class="game-top">
         <button type="button" class="game-back" id="gameBack">← Back to Our Trip</button>
         <div class="game-title">💗 Rescue Her! 💗</div>
-        <div class="game-stats">Hearts: <span class="heart-count" id="heartCount">0</span> / 20</div>
+        <div class="game-stats">
+          Hearts: <span class="heart-count" id="heartCount">0</span> / 20
+        </div>
       </div>
 
-      <div class="game-intro">Move him around and collect 20 falling hearts. SAVE HER! ❤️</div>
+      <div class="game-intro">
+        Move him around and collect 20 falling hearts. SAVE HER! ❤️
+      </div>
 
       <div class="game-board" id="gameBoard">
         <div class="game-tip">Use WASD, arrow keys, or screen drag • Collect every heart!</div>
@@ -267,7 +683,10 @@
         <div class="game-start-card" id="gameStartCard">
           <div class="start-inner">
             <h2>One tiny mission. 💕</h2>
-            <p>She is stuck in the love dungeon! Collect <strong>20 hearts</strong> to open the cage and reunite with Her Cuteness.</p>
+            <p>
+              She is stuck in the love dungeon! Collect <strong>20 hearts</strong>
+              to open the cage and reunite with Her Cuteness.
+            </p>
             <button type="button" class="start-btn" id="gameStartBtn">Start Game 💗</button>
           </div>
         </div>
@@ -289,9 +708,17 @@
               <div class="scene-kiss" id="sceneKiss">💋❤️</div>
             </div>
 
-            <div class="scene-text" id="sceneText">The cage opens… and she runs straight to you. 🥹</div>
-            <div class="scene-sub" id="sceneSub">Because you collected all 20 hearts for her.</div>
-            <button type="button" class="scene-btn" id="sceneBack" style="display:none">Back to Our Trip 💕</button>
+            <div class="scene-text" id="sceneText">
+              The cage opens… and she runs straight to you. 🥹
+            </div>
+
+            <div class="scene-sub" id="sceneSub">
+              Because you collected all 20 hearts for her.
+            </div>
+
+            <button type="button" class="scene-btn" id="sceneBack" style="display:none">
+              Back to Our Trip 💕
+            </button>
           </div>
         </div>
       </div>
@@ -421,7 +848,7 @@ const days = [
   {
     date:'September 20th',
     note:'☕ Brekkie → 🚗 Dinosaur Park → 🦖 Dino Park → 🥪 Packed Lunch → 🌉 Natural Bridge → 🚗 Yurt → 🥩 Dinner Grill → ❤️ Anniversary Night',
-    moment:'This one is the adventure day!! Dinosaurs, lunch, nature, THE YURT! ❤️',
+    moment:'This one is the anniversary day. Nature, dinosaurs, sushi, and then our own little anniversary night at the yurt. ❤️',
     character:'him',
     stops:[
       {
@@ -581,9 +1008,37 @@ function escapeHtml(value){
   }[c]));
 }
 
+function getCostValue(cost){
+  if(!cost) return 0;
+
+  const match = String(cost).match(/\$([\d,]+(?:\.\d{2})?)/);
+  if(!match) return 0;
+
+  return parseFloat(match[1].replace(/,/g,''));
+}
+
+function getDayTotal(day){
+  return day.stops.reduce((total, stop) => total + getCostValue(stop.cost), 0);
+}
+
+function getTripTotal(){
+  return days.reduce((total, day) => total + getDayTotal(day), 0);
+}
+
+function formatMoney(amount){
+  return amount.toLocaleString('en-US', {
+    style:'currency',
+    currency:'USD',
+    minimumFractionDigits:0,
+    maximumFractionDigits:2
+  });
+}
+
 function renderDay(scrollToStop = false){
   const day = days[dayIndex];
   const char = day.character === 'her' ? 'res/her.png' : 'res/him.png';
+  const dayTotal = getDayTotal(day);
+  const tripTotal = getTripTotal();
 
   dayBtns.forEach((button, i) => {
     button.classList.toggle('active', i === dayIndex);
@@ -598,6 +1053,24 @@ function renderDay(scrollToStop = false){
         <div class="day-title">${escapeHtml(day.date)}</div>
         <div class="day-note">${day.note}</div>
       </div>
+    </div>
+  `;
+
+  html += `
+    <div class="spending-card">
+      <div class="spending-label">Amount Spent This Day</div>
+      <div class="spending-amount">${formatMoney(dayTotal)}</div>
+
+      ${
+        dayIndex === days.length - 1
+        ? `
+          <div class="final-total">
+            <div class="spending-label">Final Total Trip Cost</div>
+            <div class="spending-amount">${formatMoney(tripTotal)}</div>
+          </div>
+        `
+        : ''
+      }
     </div>
   `;
 
@@ -675,11 +1148,13 @@ function renderDay(scrollToStop = false){
 
   prevBtn.disabled = atBeginning;
   nextBtn.disabled = atEnd;
+
   prevBtn.textContent = '← Previous Day';
   nextBtn.textContent = 'Next Day →';
 
   if (scrollToStop) {
     const selected = document.getElementById(`stop-${dayIndex}-${stopIndex}`);
+
     if (selected) {
       selected.scrollIntoView({
         behavior:'smooth',
@@ -690,7 +1165,7 @@ function renderDay(scrollToStop = false){
 }
 
 function nextDay(){
-  if (dayIndex >= days.length - 1) return;
+  if(dayIndex >= days.length - 1) return;
 
   dayIndex += 1;
   stopIndex = 0;
@@ -698,7 +1173,7 @@ function nextDay(){
 }
 
 function previousDay(){
-  if (dayIndex <= 0) return;
+  if(dayIndex <= 0) return;
 
   dayIndex -= 1;
   stopIndex = 0;
@@ -786,11 +1261,13 @@ function closeGame(){
 function startFreshGame(){
   stopGame();
   clearHearts();
+
   collected = 0;
   heartCountEl.textContent = '0';
-  resetPlayer();
-  gameFinished = false;
 
+  resetPlayer();
+
+  gameFinished = false;
   cutscene.classList.remove('show');
   gameCage.style.opacity = '1';
   gameStartCard.classList.remove('hide');
@@ -810,7 +1287,7 @@ function startGame(){
   gameRunning = true;
   lastSpawn = performance.now();
 
-  for(let i=0;i<6;i++) {
+  for(let i=0;i<6;i++){
     spawnHeart(true);
   }
 
@@ -820,7 +1297,7 @@ function startGame(){
 function stopGame(){
   gameRunning = false;
 
-  if(rafId) {
+  if(rafId){
     cancelAnimationFrame(rafId);
   }
 
@@ -852,19 +1329,19 @@ function spawnHeart(initial=false){
 function movePlayer(dt){
   const speed = 120;
 
-  if(keys['ArrowLeft'] || keys['a'] || keys['A']) {
+  if(keys['ArrowLeft'] || keys['a'] || keys['A']){
     playerX -= speed*dt/10;
   }
 
-  if(keys['ArrowRight'] || keys['d'] || keys['D']) {
+  if(keys['ArrowRight'] || keys['d'] || keys['D']){
     playerX += speed*dt/10;
   }
 
-  if(keys['ArrowUp'] || keys['w'] || keys['W']) {
+  if(keys['ArrowUp'] || keys['w'] || keys['W']){
     playerY += speed*dt/10;
   }
 
-  if(keys['ArrowDown'] || keys['s'] || keys['S']) {
+  if(keys['ArrowDown'] || keys['s'] || keys['S']){
     playerY -= speed*dt/10;
   }
 
@@ -876,8 +1353,8 @@ function movePlayer(dt){
 }
 
 function intersects(a,b){
-  const ar=a.getBoundingClientRect();
-  const br=b.getBoundingClientRect();
+  const ar = a.getBoundingClientRect();
+  const br = b.getBoundingClientRect();
 
   return ar.left < br.right &&
          ar.right > br.left &&
@@ -901,7 +1378,7 @@ function gameLoop(now){
   const boardRect = gameBoard.getBoundingClientRect();
 
   for(let i=gameHearts.length-1;i>=0;i--){
-    const h=gameHearts[i];
+    const h = gameHearts[i];
 
     h.y += h.speed*dt;
     h.el.style.top = h.y + '%';
@@ -913,7 +1390,7 @@ function gameLoop(now){
       collected++;
       heartCountEl.textContent = String(collected);
 
-      if(collected>=20){
+      if(collected >= 20){
         finishGame();
         return;
       }
@@ -977,11 +1454,11 @@ window.addEventListener('keydown', e=>{
     e.preventDefault();
   }
 
-  keys[e.key]=true;
+  keys[e.key] = true;
 });
 
 window.addEventListener('keyup', e=>{
-  keys[e.key]=false;
+  keys[e.key] = false;
 });
 
 // Phone / tablet controls: drag the character directly with your finger.
@@ -1010,8 +1487,8 @@ function movePlayerToPointer(e){
   const x = ((e.clientX - r.left) / r.width) * 100;
   const y = 100 - ((e.clientY - r.top) / r.height) * 100;
 
-  playerX = Math.max(2, Math.min(82, x));
-  playerY = Math.max(2, Math.min(77, y));
+  playerX = Math.max(2,Math.min(82,x));
+  playerY = Math.max(2,Math.min(77,y));
 
   gamePlayer.style.left = playerX + '%';
   gamePlayer.style.bottom = playerY + '%';
