@@ -19,8 +19,11 @@
     --shadow:0 18px 50px rgba(70,42,62,.14);
     --radius:24px;
   }
+
   *{box-sizing:border-box}
+
   html{scroll-behavior:smooth}
+
   body{
     margin:0;
     font-family:ui-rounded,"Trebuchet MS",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
@@ -32,8 +35,14 @@
       linear-gradient(180deg,#fffaf7 0%,#fdf9ff 48%,#fbfffd 100%);
     min-height:100vh;
   }
+
   a{color:inherit}
-  .wrap{max-width:1180px;margin:0 auto;padding:24px 18px 70px}
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:24px 18px 70px
+  }
 
   /* Floating heart button */
   .heart-drop-btn{
@@ -52,11 +61,16 @@
     box-shadow:0 10px 24px rgba(70,42,62,.18);
     transition:transform .15s,box-shadow .15s;
   }
+
   .heart-drop-btn:hover{
     transform:translateY(-2px);
     box-shadow:0 14px 28px rgba(70,42,62,.22);
   }
-  .heart-drop-btn:active{transform:scale(.94)}
+
+  .heart-drop-btn:active{
+    transform:scale(.94);
+  }
+
   .falling-heart{
     position:fixed;
     top:-50px;
@@ -67,6 +81,7 @@
     animation:heartFall linear forwards;
     filter:drop-shadow(0 5px 7px rgba(70,42,62,.15));
   }
+
   @keyframes heartFall{
     0%{
       transform:translateY(0) rotate(0deg) scale(.8);
@@ -89,24 +104,51 @@
     background:linear-gradient(135deg,rgba(255,228,235,.9),rgba(245,237,255,.95) 45%,rgba(227,248,241,.92));
     box-shadow:var(--shadow);
   }
-  .sparkles{position:absolute;inset:0;pointer-events:none;font-size:18px;opacity:.55}
+
+  .sparkles{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    font-size:18px;
+    opacity:.55
+  }
+
   .sparkles span{position:absolute}
   .sparkles span:nth-child(1){left:8%;top:15%}
   .sparkles span:nth-child(2){left:42%;top:9%}
   .sparkles span:nth-child(3){right:10%;top:24%}
   .sparkles span:nth-child(4){right:22%;bottom:18%}
   .sparkles span:nth-child(5){left:18%;bottom:11%}
-  .hero-grid{display:grid;grid-template-columns:180px 1fr 180px;align-items:end;gap:16px;position:relative}
-  .person{display:flex;justify-content:center;align-items:end}
+
+  .hero-grid{
+    display:grid;
+    grid-template-columns:180px 1fr 180px;
+    align-items:end;
+    gap:16px;
+    position:relative
+  }
+
+  .person{
+    display:flex;
+    justify-content:center;
+    align-items:end
+  }
+
   .person img{
     width:170px;
     height:170px;
     object-fit:contain;
     filter:drop-shadow(0 10px 10px rgba(75,42,63,.15))
   }
+
   .person:first-child img{transform:translateY(3px)}
   .person:last-child img{transform:translateY(6px)}
-  .title{text-align:center;padding-bottom:6px}
+
+  .title{
+    text-align:center;
+    padding-bottom:6px
+  }
+
   .kicker{
     font-weight:800;
     letter-spacing:.13em;
@@ -114,7 +156,13 @@
     font-size:.78rem;
     color:#9b5c77
   }
-  h1{margin:8px 0 8px;font-size:clamp(2rem,5vw,4rem);line-height:.98}
+
+  h1{
+    margin:8px 0 8px;
+    font-size:clamp(2rem,5vw,4rem);
+    line-height:.98
+  }
+
   .subtitle{
     max-width:680px;
     margin:0 auto;
@@ -122,6 +170,7 @@
     font-size:1.05rem;
     line-height:1.55
   }
+
   .locked{
     display:inline-flex;
     align-items:center;
@@ -137,7 +186,14 @@
   }
 
   /* Controls */
-  .controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:18px 0}
+  .controls{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin:18px 0
+  }
+
   .day-btn,.nav-btn{
     border:0;
     cursor:pointer;
@@ -150,13 +206,29 @@
     box-shadow:0 8px 20px rgba(70,42,62,.08);
     transition:.2s transform,.2s box-shadow,.2s background;
   }
+
   .day-btn:hover,.nav-btn:hover{
     transform:translateY(-2px);
     box-shadow:0 12px 26px rgba(70,42,62,.12)
   }
-  .day-btn.active{background:var(--ink);color:white}
-  .nav-row{display:flex;justify-content:center;gap:10px;margin:6px 0 20px}
-  .nav-btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+
+  .day-btn.active{
+    background:var(--ink);
+    color:white
+  }
+
+  .nav-row{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:6px 0 20px
+  }
+
+  .nav-btn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+    transform:none
+  }
 
   /* Day title */
   .day-header{
@@ -167,8 +239,16 @@
     flex-wrap:wrap;
     margin:8px 0 16px;
   }
-  .day-title{font-size:1.6rem;font-weight:900}
-  .day-note{color:var(--muted);font-weight:700}
+
+  .day-title{
+    font-size:1.6rem;
+    font-weight:900
+  }
+
+  .day-note{
+    color:var(--muted);
+    font-weight:700
+  }
 
   /* Spending */
   .spending-card{
@@ -179,6 +259,7 @@
     border:1px solid #ead6e1;
     box-shadow:0 10px 24px rgba(70,42,62,.08);
   }
+
   .spending-label{
     color:var(--muted);
     font-size:.82rem;
@@ -186,20 +267,28 @@
     text-transform:uppercase;
     letter-spacing:.08em;
   }
+
   .spending-amount{
     font-size:1.55rem;
     font-weight:900;
     margin-top:3px;
   }
+
   .final-total{
     margin-top:10px;
     padding-top:10px;
     border-top:1px dashed #dec8d6;
   }
-  .final-total .spending-amount{font-size:1.8rem}
+
+  .final-total .spending-amount{
+    font-size:1.8rem
+  }
 
   /* Timeline */
-  .timeline{position:relative}
+  .timeline{
+    position:relative;
+  }
+
   .timeline::before{
     content:"";
     position:absolute;
@@ -208,15 +297,42 @@
     bottom:0;
     width:4px;
     background:linear-gradient(var(--rose),var(--lav),var(--mint));
-    border-radius:4px
+    border-radius:4px;
+    z-index:0;
   }
+
+  /* Real-time timeline car */
+  .timeline-car{
+    position:absolute;
+    left:31px;
+    top:32px;
+    transform:translate(-50%,-50%);
+    font-size:35px;
+    line-height:1;
+    width:48px;
+    height:48px;
+    display:grid;
+    place-items:center;
+    z-index:12;
+    pointer-events:none;
+    user-select:none;
+    filter:drop-shadow(0 7px 7px rgba(70,42,62,.2));
+    transition:top 1s linear;
+  }
+
+  .timeline-car.hidden{
+    display:none
+  }
+
   .stop{
     position:relative;
     display:grid;
     grid-template-columns:64px 1fr;
     gap:16px;
-    margin:0 0 18px
+    margin:0 0 18px;
+    z-index:2;
   }
+
   .dot{
     width:64px;
     height:64px;
@@ -227,8 +343,9 @@
     border:4px solid var(--rose);
     box-shadow:0 10px 24px rgba(70,42,62,.12);
     font-size:25px;
-    z-index:1
+    z-index:1;
   }
+
   .card{
     background:rgba(255,255,255,.92);
     border:1px solid rgba(115,84,103,.13);
@@ -237,27 +354,38 @@
     box-shadow:0 10px 28px rgba(70,42,62,.08);
     transition:.25s transform,.25s box-shadow,.25s border-color
   }
+
   .stop.active-stop .card{
     transform:translateY(-3px);
     box-shadow:0 16px 34px rgba(70,42,62,.14);
     border-color:#ef9db5
   }
+
   .stop.active-stop .dot{
     transform:scale(1.08);
     box-shadow:0 12px 28px rgba(70,42,62,.18)
   }
+
   .time{
     font-size:.86rem;
     font-weight:900;
     color:#9c4c6b;
     letter-spacing:.02em
   }
+
   .activity{
     font-size:1.28rem;
     font-weight:900;
     margin:4px 0 8px
   }
-  .meta{display:flex;flex-wrap:wrap;gap:7px;margin:7px 0 10px}
+
+  .meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin:7px 0 10px
+  }
+
   .pill{
     display:inline-flex;
     align-items:center;
@@ -269,9 +397,23 @@
     font-size:.82rem;
     font-weight:800
   }
-  .details{display:grid;gap:5px;color:#6e5b69;line-height:1.5}
+
+  .details{
+    display:grid;
+    gap:5px;
+    color:#6e5b69;
+    line-height:1.5
+  }
+
   .details strong{color:var(--ink)}
-  .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px}
+
+  .links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:11px
+  }
+
   .link{
     display:inline-flex;
     align-items:center;
@@ -284,7 +426,10 @@
     font-size:.83rem;
     font-weight:900
   }
-  .link:hover{background:#ffe6ee}
+
+  .link:hover{
+    background:#ffe6ee
+  }
 
   /* Character moment */
   .character-moment{
@@ -297,6 +442,7 @@
     align-items:center;
     gap:14px
   }
+
   .character-moment img{
     width:92px;
     height:92px;
@@ -304,6 +450,7 @@
     flex:0 0 auto;
     filter:drop-shadow(0 7px 9px rgba(75,42,63,.12))
   }
+
   .bubble{
     background:white;
     border-radius:18px;
@@ -313,6 +460,7 @@
     line-height:1.45;
     position:relative
   }
+
   .bubble::before{
     content:"";
     position:absolute;
@@ -334,12 +482,21 @@
     border:1px solid rgba(115,84,103,.12);
     box-shadow:var(--shadow)
   }
+
   .footer-heart{font-size:2rem}
   .footer-card h2{margin:4px 0 6px}
-  .footer-card p{margin:0;color:var(--muted);line-height:1.5}
+  .footer-card p{
+    margin:0;
+    color:var(--muted);
+    line-height:1.5
+  }
 
   /* Minigame */
-  .mini-wrap{text-align:center;margin:10px 0 24px}
+  .mini-wrap{
+    text-align:center;
+    margin:10px 0 24px
+  }
+
   .minigame-launch{
     border:0;
     cursor:pointer;
@@ -352,10 +509,12 @@
     box-shadow:0 10px 24px rgba(70,42,62,.15);
     transition:transform .2s,box-shadow .2s
   }
+
   .minigame-launch:hover{
     transform:translateY(-2px);
     box-shadow:0 14px 28px rgba(70,42,62,.2)
   }
+
   .mini-hint{
     margin-top:8px;
     color:var(--muted);
@@ -372,7 +531,9 @@
     padding:18px;
     overflow:auto
   }
+
   .game-overlay.show{display:block}
+
   .game-shell{
     max-width:1050px;
     margin:0 auto;
@@ -380,6 +541,7 @@
     display:flex;
     flex-direction:column
   }
+
   .game-top{
     display:flex;
     align-items:center;
@@ -387,6 +549,7 @@
     gap:12px;
     flex-wrap:wrap
   }
+
   .game-back{
     border:0;
     background:#fff;
@@ -398,10 +561,30 @@
     cursor:pointer;
     color:var(--ink)
   }
-  .game-title{text-align:center;flex:1;font-size:1.4rem;font-weight:900}
-  .game-stats{min-width:190px;text-align:right;font-weight:900;color:#7b5870}
+
+  .game-title{
+    text-align:center;
+    flex:1;
+    font-size:1.4rem;
+    font-weight:900
+  }
+
+  .game-stats{
+    min-width:190px;
+    text-align:right;
+    font-weight:900;
+    color:#7b5870
+  }
+
   .heart-count{color:#d84d79}
-  .game-intro{text-align:center;margin:8px 0 12px;color:#6c5666;font-weight:700}
+
+  .game-intro{
+    text-align:center;
+    margin:8px 0 12px;
+    color:#6c5666;
+    font-weight:700
+  }
+
   .game-board{
     position:relative;
     flex:1;
@@ -418,6 +601,7 @@
     box-shadow:var(--shadow);
     touch-action:none
   }
+
   .game-board:before{
     content:'💗';
     position:absolute;
@@ -426,6 +610,7 @@
     font-size:28px;
     opacity:.35
   }
+
   .game-board:after{
     content:'♡';
     position:absolute;
@@ -434,6 +619,7 @@
     font-size:40px;
     opacity:.28
   }
+
   .cage{
     position:absolute;
     right:5%;
@@ -446,6 +632,7 @@
     box-shadow:0 12px 30px rgba(70,42,62,.16);
     z-index:2
   }
+
   .cage:before{
     content:'🔒';
     position:absolute;
@@ -454,6 +641,7 @@
     transform:translateX(-50%);
     font-size:28px
   }
+
   .bar{
     position:absolute;
     top:0;
@@ -462,11 +650,13 @@
     background:#a7899a;
     box-shadow:inset 2px 0 rgba(255,255,255,.6)
   }
+
   .bar.b1{left:22px}
   .bar.b2{left:51px}
   .bar.b3{left:80px}
   .bar.b4{left:109px}
   .bar.b5{left:138px}
+
   .game-her{
     position:absolute;
     left:50%;
@@ -478,6 +668,7 @@
     filter:drop-shadow(0 8px 8px rgba(70,42,62,.16));
     z-index:3
   }
+
   .player{
     position:absolute;
     left:12%;
@@ -489,6 +680,7 @@
     user-select:none;
     filter:drop-shadow(0 10px 9px rgba(70,42,62,.16))
   }
+
   .heart{
     position:absolute;
     width:34px;
@@ -502,6 +694,7 @@
     filter:drop-shadow(0 4px 6px rgba(70,42,62,.15));
     will-change:transform
   }
+
   .game-tip{
     position:absolute;
     left:50%;
@@ -516,6 +709,7 @@
     z-index:6;
     white-space:nowrap
   }
+
   .cutscene{
     position:absolute;
     inset:0;
@@ -527,7 +721,9 @@
     z-index:20;
     padding:20px
   }
+
   .cutscene.show{display:flex}
+
   .scene-card{
     width:min(760px,100%);
     text-align:center;
@@ -537,6 +733,7 @@
     box-shadow:0 24px 70px rgba(56,40,58,.28);
     border:2px solid #ffd3df
   }
+
   .scene-stage{
     position:relative;
     height:265px;
@@ -545,6 +742,7 @@
     border-radius:22px;
     background:linear-gradient(180deg,#fff4f8,#f2efff)
   }
+
   .scene-her,.scene-him{
     position:absolute;
     bottom:12px;
@@ -554,10 +752,12 @@
     filter:drop-shadow(0 8px 8px rgba(70,42,62,.14));
     transition:all .9s ease
   }
+
   .scene-her{left:24%}
   .scene-him{right:24%}
   .scene-her.released{left:37%}
   .scene-him.kiss{right:37%}
+
   .scene-kiss{
     position:absolute;
     left:50%;
@@ -568,10 +768,12 @@
     transition:.6s ease;
     z-index:4
   }
+
   .scene-kiss.show{
     opacity:1;
     transform:translate(-50%,-50%) scale(1)
   }
+
   .scene-cage{
     position:absolute;
     left:20%;
@@ -583,10 +785,12 @@
     opacity:1;
     transition:.6s ease
   }
+
   .scene-cage.gone{
     opacity:0;
     transform:scale(1.1)
   }
+
   .scene-bar{
     position:absolute;
     top:0;
@@ -594,12 +798,24 @@
     width:8px;
     background:#a7899a
   }
+
   .scene-bar:nth-child(1){left:25px}
   .scene-bar:nth-child(2){left:58px}
   .scene-bar:nth-child(3){left:91px}
   .scene-bar:nth-child(4){left:124px}
-  .scene-text{font-size:1.18rem;font-weight:900;line-height:1.5}
-  .scene-sub{color:var(--muted);font-weight:700;margin-top:5px}
+
+  .scene-text{
+    font-size:1.18rem;
+    font-weight:900;
+    line-height:1.5
+  }
+
+  .scene-sub{
+    color:var(--muted);
+    font-weight:700;
+    margin-top:5px
+  }
+
   .game-start-card{
     position:absolute;
     inset:0;
@@ -610,7 +826,9 @@
     z-index:10;
     padding:20px
   }
+
   .game-start-card.hide{display:none}
+
   .start-inner{
     background:#fff;
     border:2px solid #ffd3df;
@@ -620,8 +838,15 @@
     text-align:center;
     max-width:560px
   }
+
   .start-inner h2{margin:0 0 8px}
-  .start-inner p{color:var(--muted);font-weight:700;line-height:1.5}
+
+  .start-inner p{
+    color:var(--muted);
+    font-weight:700;
+    line-height:1.5
+  }
+
   .start-btn,.scene-btn{
     border:0;
     cursor:pointer;
@@ -653,15 +878,32 @@
     .title{order:0}
     .person{display:none}
     .timeline::before{left:20px}
-    .stop{grid-template-columns:42px 1fr;gap:10px}
-    .dot{width:42px;height:42px;font-size:18px;border-width:3px}
+    .timeline-car{
+      left:20px;
+      font-size:29px;
+      width:40px;
+      height:40px
+    }
+    .stop{
+      grid-template-columns:42px 1fr;
+      gap:10px
+    }
+    .dot{
+      width:42px;
+      height:42px;
+      font-size:18px;
+      border-width:3px
+    }
     .card{padding:16px}
-    .character-moment img{width:74px;height:74px}
+    .character-moment img{
+      width:74px;
+      height:74px
+    }
     .heart-drop-btn{
       top:10px;
       left:10px;
       padding:10px 14px;
-      font-size:.85rem;
+      font-size:.85rem
     }
   }
 </style>
@@ -669,7 +911,6 @@
 
 <body>
 
-<!-- Floating heart button -->
 <button type="button" class="heart-drop-btn" id="heartDropBtn">💗 Drop Hearts!</button>
 
 <div class="wrap">
@@ -726,7 +967,9 @@
 
       <div class="game-top">
         <button type="button" class="game-back" id="gameBack">← Back to Our Trip</button>
+
         <div class="game-title">💗 Rescue Her! 💗</div>
+
         <div class="game-stats">
           Hearts: <span class="heart-count" id="heartCount">0</span> / 20
         </div>
@@ -737,7 +980,10 @@
       </div>
 
       <div class="game-board" id="gameBoard">
-        <div class="game-tip">Use WASD, arrow keys, or screen drag • Collect every heart!</div>
+
+        <div class="game-tip">
+          Use WASD, arrow keys, or screen drag • Collect every heart!
+        </div>
 
         <div class="cage" id="gameCage" aria-label="Her is waiting in a cage">
           <div class="bar b1"></div>
@@ -748,7 +994,13 @@
           <img class="game-her" src="res/her.png" alt="Her character"/>
         </div>
 
-        <img class="player" id="gamePlayer" src="res/him.png" alt="His character" draggable="false"/>
+        <img
+          class="player"
+          id="gamePlayer"
+          src="res/him.png"
+          alt="His character"
+          draggable="false"
+        />
 
         <div class="game-start-card" id="gameStartCard">
           <div class="start-inner">
@@ -757,7 +1009,9 @@
               She is stuck in the love dungeon! Collect <strong>20 hearts</strong>
               to open the cage and reunite with Her Cuteness.
             </p>
-            <button type="button" class="start-btn" id="gameStartBtn">Start Game 💗</button>
+            <button type="button" class="start-btn" id="gameStartBtn">
+              Start Game 💗
+            </button>
           </div>
         </div>
 
@@ -786,7 +1040,12 @@
               Because you collected all 20 hearts for her.
             </div>
 
-            <button type="button" class="scene-btn" id="sceneBack" style="display:none">
+            <button
+              type="button"
+              class="scene-btn"
+              id="sceneBack"
+              style="display:none"
+            >
               Back to Our Trip 💕
             </button>
           </div>
@@ -1048,7 +1307,10 @@ const days = [
         location:"Isabella's Italian Trattoria, 4925 Boonsboro Rd, Lynchburg, VA 24503",
         cost:'$100',
         links:[
-          ["Isabella's Italian Trattoria",'https://www.isabellasitalian.com/?utm_source=google&utm_medium=wix_google_business_profile&utm_campaign=5398908778801012654']
+          [
+            "Isabella's Italian Trattoria",
+            'https://www.isabellasitalian.com/?utm_source=google&utm_medium=wix_google_business_profile&utm_campaign=5398908778801012654'
+          ]
         ]
       },
       {
@@ -1091,17 +1353,24 @@ function getCostValue(cost){
   if(!cost) return 0;
 
   const match = String(cost).match(/\$([\d,]+(?:\.\d{2})?)/);
+
   if(!match) return 0;
 
   return parseFloat(match[1].replace(/,/g,''));
 }
 
 function getDayTotal(day){
-  return day.stops.reduce((total,stop) => total + getCostValue(stop.cost),0);
+  return day.stops.reduce(
+    (total,stop) => total + getCostValue(stop.cost),
+    0
+  );
 }
 
 function getTripTotal(){
-  return days.reduce((total,day) => total + getDayTotal(day),0);
+  return days.reduce(
+    (total,day) => total + getDayTotal(day),
+    0
+  );
 }
 
 function formatMoney(amount){
@@ -1113,15 +1382,75 @@ function formatMoney(amount){
   });
 }
 
+/*
+  All three trip dates are in America/New_York.
+  September 19th–21st, 2026 are UTC-04:00.
+*/
+function getDateNumber(dateText){
+  const match = String(dateText).match(/(\d+)/);
+  return match ? Number(match[1]) : 0;
+}
+
+function parseTimePart(timeText){
+  const match = String(timeText)
+    .trim()
+    .match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+
+  if(!match) return null;
+
+  let hour = Number(match[1]);
+  const minute = Number(match[2]);
+  const meridiem = match[3].toUpperCase();
+
+  if(meridiem === 'PM' && hour !== 12) hour += 12;
+  if(meridiem === 'AM' && hour === 12) hour = 0;
+
+  return {
+    hour,
+    minute
+  };
+}
+
+function getStopTimes(day){
+  const dateNumber = getDateNumber(day.date);
+
+  return day.stops.map(stop => {
+    const parts = String(stop.time).split(' - ');
+    const start = parseTimePart(parts[0]);
+    const end = parseTimePart(parts[1]);
+
+    if(!start || !end) return null;
+
+    const startDate = new Date(
+      `2026-09-${String(dateNumber).padStart(2,'0')}T${String(start.hour).padStart(2,'0')}:${String(start.minute).padStart(2,'0')}:00-04:00`
+    );
+
+    const endDate = new Date(
+      `2026-09-${String(dateNumber).padStart(2,'0')}T${String(end.hour).padStart(2,'0')}:${String(end.minute).padStart(2,'0')}:00-04:00`
+    );
+
+    return {
+      start:startDate,
+      end:endDate
+    };
+  });
+}
+
 function renderDay(scrollToStop=false){
   const day = days[dayIndex];
-  const char = day.character === 'her' ? 'res/her.png' : 'res/him.png';
+  const char = day.character === 'her'
+    ? 'res/her.png'
+    : 'res/him.png';
+
   const dayTotal = getDayTotal(day);
   const tripTotal = getTripTotal();
 
   dayBtns.forEach((button,i)=>{
     button.classList.toggle('active',i === dayIndex);
-    button.setAttribute('aria-current',i === dayIndex ? 'page' : 'false');
+    button.setAttribute(
+      'aria-current',
+      i === dayIndex ? 'page' : 'false'
+    );
   });
 
   let html = `<section data-day="${dayIndex + 1}">`;
@@ -1160,15 +1489,23 @@ function renderDay(scrollToStop=false){
     </div>
   `;
 
-  html += `<div class="timeline">`;
+  html += `
+    <div class="timeline">
+      <div class="timeline-car hidden" id="timelineCar" aria-hidden="true">🚗</div>
+  `;
 
   day.stops.forEach((s,i)=>{
     html += `
-      <article class="stop${i === stopIndex ? ' active-stop' : ''}" id="stop-${dayIndex}-${i}">
+      <article
+        class="stop${i === stopIndex ? ' active-stop' : ''}"
+        id="stop-${dayIndex}-${i}"
+      >
         <div class="dot">${s.icon}</div>
+
         <div class="card">
           <div class="time">${escapeHtml(s.time)}</div>
           <div class="activity">${escapeHtml(s.title)}</div>
+
           <div class="meta">
     `;
 
@@ -1189,16 +1526,27 @@ function renderDay(scrollToStop=false){
     if(s.details?.length){
       html += `
         <div class="details">
-          ${s.details.map(d=>`<div>${escapeHtml(d)}</div>`).join('')}
+          ${s.details.map(d => `<div>${escapeHtml(d)}</div>`).join('')}
         </div>
       `;
+    }
+
+    if(s.options?.length){
+      html += s.options
+        .map(o => `<div class="option"><strong>${escapeHtml(o)}</strong></div>`)
+        .join('');
     }
 
     if(s.links?.length){
       html += `
         <div class="links">
-          ${s.links.map(([label,url])=>`
-            <a class="link" href="${url}" target="_blank" rel="noopener noreferrer">
+          ${s.links.map(([label,url]) => `
+            <a
+              class="link"
+              href="${url}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               🔗 ${escapeHtml(label)}
             </a>
           `).join('')}
@@ -1220,7 +1568,9 @@ function renderDay(scrollToStop=false){
   nextBtn.disabled = dayIndex === days.length - 1;
 
   if(scrollToStop){
-    const selected = document.getElementById(`stop-${dayIndex}-${stopIndex}`);
+    const selected = document.getElementById(
+      `stop-${dayIndex}-${stopIndex}`
+    );
 
     if(selected){
       selected.scrollIntoView({
@@ -1229,6 +1579,107 @@ function renderDay(scrollToStop=false){
       });
     }
   }
+
+  updateTimelineCar();
+}
+
+function getTimelineCirclePositions(){
+  const timeline = container.querySelector('.timeline');
+
+  if(!timeline) return null;
+
+  const stops = Array.from(timeline.querySelectorAll('.stop'));
+  const timelineRect = timeline.getBoundingClientRect();
+
+  return stops.map(stop => {
+    const dot = stop.querySelector('.dot');
+    const dotRect = dot.getBoundingClientRect();
+
+    return {
+      y:
+        (dotRect.top - timelineRect.top) +
+        (dotRect.height / 2)
+    };
+  });
+}
+
+function updateTimelineCar(){
+  const timeline = container.querySelector('.timeline');
+  const car = document.getElementById('timelineCar');
+
+  if(!timeline || !car) return;
+
+  const day = days[dayIndex];
+  const times = getStopTimes(day);
+
+  if(!times.length || times.some(t => !t)){
+    car.classList.add('hidden');
+    return;
+  }
+
+  const now = new Date();
+
+  const firstStart = times[0].start;
+  const lastEnd = times[times.length - 1].end;
+
+  /*
+    The car only appears while the current real time is within
+    the currently selected day's schedule.
+    Before the first event: hidden.
+    After the final event: hidden.
+  */
+  if(now < firstStart || now >= lastEnd){
+    car.classList.add('hidden');
+    return;
+  }
+
+  const positions = getTimelineCirclePositions();
+
+  if(!positions || positions.length !== times.length){
+    car.classList.add('hidden');
+    return;
+  }
+
+  let segmentIndex = 0;
+  let progress = 0;
+
+  if(now >= times[times.length - 1].start){
+    segmentIndex = times.length - 2;
+    progress = 1;
+  }else{
+    for(let i=0;i<times.length-1;i++){
+      const currentStart = times[i].start;
+      const nextStart = times[i+1].start;
+
+      if(now >= currentStart && now < nextStart){
+        segmentIndex = i;
+
+        const total =
+          nextStart.getTime() -
+          currentStart.getTime();
+
+        const elapsed =
+          now.getTime() -
+          currentStart.getTime();
+
+        progress = total > 0
+          ? Math.max(0,Math.min(1,elapsed / total))
+          : 0;
+
+        break;
+      }
+    }
+  }
+
+  const startY = positions[segmentIndex].y;
+  const endY = positions[segmentIndex + 1].y;
+
+  const carY =
+    startY +
+    (endY - startY) * progress;
+
+  car.style.top = carY + 'px';
+  car.classList.remove('hidden');
 }
 
 function nextDay(){
@@ -1279,16 +1730,31 @@ heartDropBtn.addEventListener('click',function(){
   const heart = document.createElement('div');
 
   heart.className = 'falling-heart';
-  heart.textContent = ['❤️','💗','💕','💖','💘'][Math.floor(Math.random() * 5)];
+
+  heart.textContent =
+    ['❤️','💗','💕','💖','💘']
+    [Math.floor(Math.random() * 5)];
 
   heart.style.left = Math.random() * 100 + 'vw';
-  heart.style.animationDuration = (2.2 + Math.random() * 2.2) + 's';
+
+  heart.style.animationDuration =
+    (2.2 + Math.random() * 2.2) + 's';
 
   document.body.appendChild(heart);
 
   setTimeout(()=>{
     heart.remove();
   },5000);
+});
+
+
+// ===== Keep the real-time car updated =====
+setInterval(()=>{
+  updateTimelineCar();
+},1000);
+
+window.addEventListener('resize',()=>{
+  updateTimelineCar();
 });
 
 
@@ -1328,7 +1794,7 @@ function resetPlayer(){
 }
 
 function clearHearts(){
-  gameHearts.forEach(h=>h.el.remove());
+  gameHearts.forEach(h => h.el.remove());
   gameHearts = [];
 }
 
@@ -1365,8 +1831,12 @@ function startFreshGame(){
   sceneHim.classList.remove('kiss');
   sceneKiss.classList.remove('show');
 
-  sceneText.textContent = 'The cage opens… and she runs straight to you. 🥹';
-  sceneSub.textContent = 'Because you collected all 20 hearts for her.';
+  sceneText.textContent =
+    'The cage opens… and she runs straight to you. 🥹';
+
+  sceneSub.textContent =
+    'Because you collected all 20 hearts for her.';
+
   sceneBack.style.display = 'none';
 }
 
@@ -1396,7 +1866,10 @@ function spawnHeart(initial=false){
   const el = document.createElement('div');
 
   el.className = 'heart';
-  el.textContent = ['❤️','💗','💕'][Math.floor(Math.random()*3)];
+
+  el.textContent =
+    ['❤️','💗','💕']
+    [Math.floor(Math.random()*3)];
 
   const x = 5 + Math.random()*88;
   const y = initial ? Math.random()*50 : -4;
@@ -1444,16 +1917,22 @@ function intersects(a,b){
   const ar = a.getBoundingClientRect();
   const br = b.getBoundingClientRect();
 
-  return ar.left < br.right &&
-         ar.right > br.left &&
-         ar.top < br.bottom &&
-         ar.bottom > br.top;
+  return (
+    ar.left < br.right &&
+    ar.right > br.left &&
+    ar.top < br.bottom &&
+    ar.bottom > br.top
+  );
 }
 
 function gameLoop(now){
   if(!gameRunning) return;
 
-  const dt = Math.min(.035,(now-(gameLoop.last||now))/1000);
+  const dt = Math.min(
+    .035,
+    (now-(gameLoop.last||now))/1000
+  );
+
   gameLoop.last = now;
 
   movePlayer(dt);
@@ -1486,7 +1965,10 @@ function gameLoop(now){
       continue;
     }
 
-    if((h.y/100)*boardRect.height > boardRect.height+30){
+    if(
+      (h.y/100)*boardRect.height >
+      boardRect.height+30
+    ){
       h.el.remove();
       gameHearts.splice(i,1);
     }
@@ -1522,7 +2004,10 @@ function finishGame(){
   },450);
 }
 
-document.getElementById('minigameLaunch').addEventListener('click',openGame);
+document
+  .getElementById('minigameLaunch')
+  .addEventListener('click',openGame);
+
 gameStartBtn.addEventListener('click',startGame);
 gameBack.addEventListener('click',closeGame);
 sceneBack.addEventListener('click',closeGame);
@@ -1564,7 +2049,11 @@ gameBoard.addEventListener('pointerdown',e=>{
 });
 
 gameBoard.addEventListener('pointermove',e=>{
-  if(!gameRunning || !draggingPlayer || e.pointerId !== activePointerId) return;
+  if(
+    !gameRunning ||
+    !draggingPlayer ||
+    e.pointerId !== activePointerId
+  ) return;
 
   movePlayerToPointer(e);
 });
@@ -1572,8 +2061,11 @@ gameBoard.addEventListener('pointermove',e=>{
 function movePlayerToPointer(e){
   const r = gameBoard.getBoundingClientRect();
 
-  const x = ((e.clientX-r.left)/r.width)*100;
-  const y = 100-((e.clientY-r.top)/r.height)*100;
+  const x =
+    ((e.clientX-r.left)/r.width)*100;
+
+  const y =
+    100-((e.clientY-r.top)/r.height)*100;
 
   playerX = Math.max(2,Math.min(82,x));
   playerY = Math.max(2,Math.min(77,y));
